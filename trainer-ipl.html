@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainer IPL - Laboratorium Instalasi Listrik | PILM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --dark-color: #2a2a2a;
+      --light-color: #f8f9fa;
+      --header-height: 80px;
+    }
+    
+    /* Gaya Header Konsisten */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      height: 70px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    header img {
+      height: 120px;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled img {
+      height: 80px;
+    }
+    
+    .site-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-left: 15px;
+      color: var(--dark-color);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled .site-title {
+      font-size: 1.1rem;
+    }
+    
+    .site-title small {
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #666;
+      display: block;
+      margin-top: 3px;
+    }
+    
+    /* Navigasi Konsisten */
+    nav {
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-item {
+      position: relative;
+      margin: 0 10px;
+    }
+    
+    .nav-link {
+      color: var(--dark-color);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(0, 102, 204, 0.05);
+    }
+    
+    .dropdown-menu {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+      margin-top: 10px;
+      min-width: 220px;
+    }
+    
+    .dropdown-item {
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      color: var(--dark-color);
+      transition: all 0.2s ease;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-color);
+      color: white;
+      padding-left: 25px;
+    }
+    
+    /* Gaya Konten Utama */
+    .page-content {
+      margin-top: calc(var(--header-height) + 40px);
+      padding-bottom: 60px;
+    }
+    
+    .facility-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
+                  url('ipl-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 100px 0;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    
+    .component-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+    }
+    
+    .component-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .component-img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .component-body {
+      padding: 25px;
+      background-color: white;
+    }
+    
+    /* Footer Konsisten */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links a {
+      color: #bbbbbb;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-content {
+        margin-top: calc(var(--header-height) + 20px);
+      }
+      
+      .facility-hero {
+        padding: 60px 0;
+      }
+      
+      .component-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Konsisten -->
+  <header id="mainHeader">
+    <a href="index.html" class="logo-container">
+      <img src="logo.png" alt="Logolab">
+      <div class="site-title">
+        Laboratorium Instalasi Listrik
+        <small>Politeknik Industri Logam Morowali</small>
+      </div>
+    </a>
+    
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="page-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="facility-hero text-center">
+        <h1><i class="bi bi-lightbulb"></i> Trainer IPL</h1>
+        <p class="lead">Instalasi Penerangan Listrik</p>
+      </div>
+      
+      <!-- Deskripsi Utama -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="component-card">
+            <div class="component-body">
+              <h3 class="mb-4">Apa Itu Trainer IPL?</h3>
+              <p>Trainer IPL (Instalasi Penerangan Listrik) adalah perangkat pembelajaran yang dirancang khusus untuk mempelajari sistem instalasi penerangan bangunan mulai dari dasar hingga menengah. Trainer ini mencakup berbagai komponen standar yang digunakan dalam instalasi penerangan rumah dan industri ringan.</p>
+              <p>Melalui trainer ini, mahasiswa dapat mempelajari berbagai sistem pengkabelan, pemasangan komponen, dan pengujian instalasi penerangan sesuai dengan standar PUIL (Persyaratan Umum Instalasi Listrik).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Komponen Panel -->
+      <h2 class="text-center mb-4"><i class="bi bi-tools"></i> Komponen Trainer IPL</h2>
+      
+      <!-- Baris 1: MCB dan Camswitch -->
+      <div class="row">
+        <!-- MCB -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="mcb.jpg" class="component-img" alt="MCB">
+            <div class="component-body">
+              <h4>MCB (Miniature Circuit Breaker)</h4>
+              <p>Pengaman arus lebih dan hubung singkat pada instalasi penerangan. Berfungsi sebagai pengganti sekering dengan kemampuan reset.</p>
+              <ul>
+                <li>Tipe: 1 Pole, 2 Pole</li>
+                <li>Rating arus: 6A, 10A, 16A</li>
+                <li>Tegangan kerja: 220-240V AC</li>
+                <li>Kurva trip: Tipe C (untuk penerangan)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Camswitch -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="camswitch.jpg" class="component-img" alt="Camswitch">
+            <div class="component-body">
+              <h4>Camswitch</h4>
+              <p>Saklar mekanis dengan kontak yang digerakkan oleh cam (tonjolan) untuk mengontrol beberapa rangkaian sekaligus.</p>
+              <ul>
+                <li>Jumlah posisi: 2-4 posisi</li>
+                <li>Rating arus: 10A-16A</li>
+                <li>Tegangan kerja: 250V AC</li>
+                <li>Aplikasi: Kontrol multi-lampu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 2: Lampu Pijar dan Sakelar Tunggal -->
+      <div class="row">
+        <!-- Lampu Pijar -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="lampu.jpg" class="component-img" alt="Lampu Pijar">
+            <div class="component-body">
+              <h4>Lampu Pijar</h4>
+              <p>Sumber cahaya dengan filamen tungsten yang berpijar saat dialiri listrik. Sudah jarang digunakan tapi penting untuk pembelajaran dasar.</p>
+              <ul>
+                <li>Daya: 25W, 40W, 60W</li>
+                <li>Tegangan: 220V</li>
+                <li>Base: E27, E14</li>
+                <li>Efisiensi: 10-15 lumen/Watt</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sakelar Tunggal -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="sakelartunggal.jpg" class="component-img" alt="Sakelar Tunggal">
+            <div class="component-body">
+              <h4>Sakelar Tunggal</h4>
+              <p>Saklar dasar untuk mengontrol satu titik lampu dari satu lokasi. Paling umum digunakan di rumah tinggal.</p>
+              <ul>
+                <li>Rating: 10A 250V</li>
+                <li>Tipe: Toggle, push button</li>
+                <li>Warna: Putih, coklat, hitam</li>
+                <li>Material: PC fire retardant</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 3: Sakelar Tukar dan Sakelar Ganda -->
+      <div class="row">
+        <!-- Sakelar Tukar -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="sakelartukar.jpg" class="component-img" alt="Sakelar Tukar">
+            <div class="component-body">
+              <h4>Sakelar Tukar</h4>
+              <p>Digunakan untuk mengontrol satu titik lampu dari dua lokasi berbeda (sistem staircase switching).</p>
+              <ul>
+                <li>Konfigurasi: 1 kutub 2 arah (SPDT)</li>
+                <li>Rating: 10A 250V</li>
+                <li>Terminal: 3 terminal (COM, L1, L2)</li>
+                <li>Aplikasi: Tangga, lorong panjang</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sakelar Ganda -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="sakelarganda.jpg" class="component-img" alt="Sakelar Ganda">
+            <div class="component-body">
+              <h4>Sakelar Ganda</h4>
+              <p>Saklar dengan dua toggle dalam satu bodi untuk mengontrol dua lampu atau kelompok lampu secara independen.</p>
+              <ul>
+                <li>Konfigurasi: 2 kutub 1 arah (DPST)</li>
+                <li>Rating: 10A 250V per kutub</li>
+                <li>Terminal: 4 terminal (2 input, 2 output)</li>
+                <li>Aplikasi: Kontrol multi-lampu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 4: Sakelar Silang dan Smart Saklar Bardi -->
+      <div class="row">
+        <!-- Sakelar Silang -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="sakelarsilang.jpg" class="component-img" alt="Sakelar Silang">
+            <div class="component-body">
+              <h4>Sakelar Silang</h4>
+              <p>Digunakan bersama saklar tukar untuk mengontrol satu lampu dari tiga lokasi atau lebih (sistem intermediate switching).</p>
+              <ul>
+                <li>Konfigurasi: 2 kutub 2 arah (DPDT)</li>
+                <li>Rating: 10A 250V</li>
+                <li>Terminal: 4 terminal (L1, L2, L1', L2')</li>
+                <li>Aplikasi: Ruangan dengan banyak pintu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Smart Saklar Bardi -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="bardi.jpg" class="component-img" alt="Smart Saklar Bardi">
+            <div class="component-body">
+              <h4>Smart Saklar Bardi</h4>
+              <p>Saklar otomatis dengan sensor gerak atau cahaya untuk mengontrol lampu secara otomatis.</p>
+              <ul>
+                <li>Tipe: Sensor gerak, sensor cahaya</li>
+                <li>Jangkauan: 5-8 meter</li>
+                <li>Sudut deteksi: 120-180 derajat</li>
+                <li>Waktu tunda: 10 detik - 30 menit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 5: Fitting Lampu dan Pipa Conduit -->
+      <div class="row">
+        <!-- Fitting Lampu -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="fitting.jpg" class="component-img" alt="Fitting Lampu">
+            <div class="component-body">
+              <h4>Fitting Lampu</h4>
+              <p>Dudukan lampu yang menghubungkan lampu dengan instalasi listrik. Berbagai tipe sesuai dengan jenis lampu.</p>
+              <ul>
+                <li>Tipe: E27, E14, GU10, G13</li>
+                <li>Material: Plastik, keramik, logam</li>
+                <li>Rating: 250V 4A-10A</li>
+                <li>Proteksi: IP20-IP65</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pipa Conduit -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="pipa.jpg" class="component-img" alt="Pipa Conduit">
+            <div class="component-body">
+              <h4>Pipa Conduit</h4>
+              <p>Pelindung kabel instalasi yang dipasang di permukaan dinding (surface wiring).</p>
+              <ul>
+                <li>Material: PVC, galvanis</li>
+                <li>Diameter: 16mm, 20mm, 25mm</li>
+                <li>Warna: Putih, abu-abu</li>
+                <li>Aksesori: Elbow, tee, box</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 6: T-DOS dan Clemp Pipa -->
+      <div class="row">
+        <!-- T-DOS -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="tdos.jpg" class="component-img" alt="T-DOS">
+            <div class="component-body">
+              <h4>T-DOS (Terminal Distribusi Outlet Sakelar)</h4>
+              <p>Kotak sambungan untuk distribusi kabel ke outlet dan sakelar dalam instalasi conduit.</p>
+              <ul>
+                <li>Ukuran: 4x4, 5x5 inci</li>
+                <li>Material: PVC self-extinguishing</li>
+                <li>Kapasitas: 4-6 kabel</li>
+                <li>Sistem: Screwless terminal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Clemp Pipa -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="klemp.jpg" class="component-img" alt="Clemp Pipa">
+            <div class="component-body">
+              <h4>Clemp Pipa</h4>
+              <p>Penjepit untuk memasang pipa conduit ke dinding atau permukaan lain.</p>
+              <ul>
+                <li>Material: Plastik, logam</li>
+                <li>Ukuran: Sesuai diameter pipa</li>
+                <li>Jarak pemasangan: Max 1 meter</li>
+                <li>Warna: Putih, abu-abu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Baris 7: Isolasi dan Inbow DOS -->
+      <div class="row">
+        <!-- Isolasi -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="isolasi.jpg" class="component-img" alt="Isolasi">
+            <div class="component-body">
+              <h4>Isolasi Listrik</h4>
+              <p>Pita isolasi untuk melindungi sambungan kabel dari hubungan singkat.</p>
+              <ul>
+                <li>Material: PVC</li>
+                <li>Lebar: 15mm, 19mm</li>
+                <li>Panjang: 10m, 20m per roll</li>
+                <li>Tegangan kerja: 600V</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Inbow DOS -->
+        <div class="col-md-6 mb-4">
+          <div class="component-card h-100">
+            <img src="outbow.jpg" class="component-img" alt="Inbow DOS">
+            <div class="component-body">
+              <h4>Inbow DOS</h4>
+              <p>Kotak sambungan dalam (inbow) untuk instalasi conduit yang ditanam di dinding.</p>
+              <ul>
+                <li>Kedalaman: 40mm, 60mm</li>
+                <li>Material: PVC</li>
+                <li>Sistem: Knock-out untuk conduit</li>
+                <li>Aplikasi: Instalasi tersembunyi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tombol Kembali -->
+      <div class="text-center mt-5">
+        <a href="index.html" class="btn btn-primary btn-lg">
+          <i class="bi bi-arrow-left"></i> Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Konsisten -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Lokasi Lab</h4>
+          <p><i class="bi bi-geo-alt-fill me-2"></i> Jl. Trans Sulawesi, Bahodopi</p>
+          <p>Kabupaten Morowali, Sulawesi Tengah</p>
+          <p><i class="bi bi-clock-fill me-2"></i> Senin-Jumat: 08.00 - 16.00 WITA</p>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Tautan Kami</h4>
+          <ul class="footer-links">
+            <li><a href="profil.html"><i class="bi bi-people-fill me-2"></i> Profil Lab</a></li>
+            <li><a href="fasilitas-umum.html"><i class="bi bi-building me-2"></i> Fasilitas</a></li>
+            <li><a href="project.html"><i class="bi bi-lightbulb-fill me-2"></i> Project Lab</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="https://pilm.ac.id"><i class="bi bi-link-45deg me-2"></i> Website PILM</a></li>
+            <li><a href="#"><i class="bi bi-journal-bookmark me-2"></i> Modul Praktikum</a></li>
+            <li><a href="#"><i class="bi bi-calendar-event me-2"></i> Jadwal</a></li>
+          </ul>
+          
+          <div class="mt-4">
+            <h4 class="footer-title">Media Sosial</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Laboratorium Instalasi Listrik - Politeknik Industri Logam Morowali. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Efek scroll header
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

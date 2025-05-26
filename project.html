@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Lab - Laboratorium Instalasi Listrik | PILM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #0066cc;
+      --dark-color: #2a2a2a;
+      --light-color: #f8f9fa;
+      --header-height: 80px;
+    }
+    
+    /* Gaya Header Konsisten */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      height: 70px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    header img {
+      height: 120px;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled img {
+      height: 80px;
+    }
+    
+    .site-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-left: 15px;
+      color: var(--dark-color);
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled .site-title {
+      font-size: 1.1rem;
+    }
+    
+    .site-title small {
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #666;
+      display: block;
+      margin-top: 3px;
+    }
+    
+    /* Navigasi Konsisten */
+    nav {
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-item {
+      position: relative;
+      margin: 0 10px;
+    }
+    
+    .nav-link {
+      color: var(--dark-color);
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(0, 102, 204, 0.05);
+    }
+    
+    .dropdown-menu {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+      margin-top: 10px;
+      min-width: 220px;
+    }
+    
+    .dropdown-item {
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      color: var(--dark-color);
+      transition: all 0.2s ease;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-color);
+      color: white;
+      padding-left: 25px;
+    }
+    
+    /* Gaya Konten Utama */
+    .page-content {
+      margin-top: calc(var(--header-height) + 40px);
+      padding-bottom: 60px;
+    }
+    
+    .project-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
+                  url('project-hero.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 100px 0;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    
+    .project-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .project-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .project-body {
+      padding: 25px;
+      background-color: white;
+    }
+    
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .project-meta i {
+      color: var(--primary-color);
+      margin-right: 5px;
+    }
+    
+    /* Footer Konsisten */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links a {
+      color: #bbbbbb;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-content {
+        margin-top: calc(var(--header-height) + 20px);
+      }
+      
+      .project-hero {
+        padding: 60px 0;
+      }
+      
+      .project-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Konsisten -->
+  <header id="mainHeader">
+    <a href="index.html" class="logo-container">
+      <img src="logo.png" alt="Logo PILM">
+      <div class="site-title">
+        Laboratorium Instalasi Listrik
+        <small>Politeknik Industri Logam Morowali</small>
+      </div>
+    </a>
+    
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="page-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="project-hero text-center">
+        <h1><i class="bi bi-lightbulb"></i> Project Lab</h1>
+        <p class="lead">Karya Inovatif Mahasiswa Laboratorium Instalasi Listrik</p>
+      </div>
+      
+      <!-- Project 1 -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="project-card">
+            <img src="project1.jpg" class="project-img" alt="Project Panel Otomatisasi Penerangan">
+            <div class="project-body">
+              <h3 class="project-title">Panel Otomatisasi Penerangan</h3>
+              <div class="project-meta">
+                <span><i class="bi bi-people-fill"></i> Kelompok 4 - Semester 4</span>
+                <span><i class="bi bi-calendar"></i> Juni 2024</span>
+                <span><i class="bi bi-tags"></i> Otomasi, Penerangan, Sensor</span>
+              </div>
+              <p>Project ini merupakan penerapan dari modul instalasi penerangan dengan penggunaan sensor dan sistem otomatis. Panel ini dirancang untuk menyalakan lampu secara otomatis berdasarkan intensitas cahaya dan waktu.</p>
+              <p>Mahasiswa belajar merancang rangkaian, mengukur daya, serta memprogram kontroler sederhana. Project ini mengintegrasikan berbagai komponen yang telah dipelajari di laboratorium.</p>
+              
+              <h5 class="mt-4"><i class="bi bi-gear"></i> Komponen Utama</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <ul>
+                    <li>Sensor LDR (Light Dependent Resistor)</li>
+                    <li>Timer Relay Digital</li>
+                    <li>Kontaktor 220V</li>
+                    <li>MCB 1P 10A</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li>Lampu LED 20W</li>
+                    <li>Push Button Start/Stop</li>
+                    <li>PLC Mikro (Optional)</li>
+                    <li>Power Supply 12VDC</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <h5 class="mt-4"><i class="bi bi-check-circle"></i> Capaian Pembelajaran</h5>
+              <ul>
+                <li>Pemahaman sistem kontrol otomatis</li>
+                <li>Kemampuan merancang diagram pengawatan</li>
+                <li>Pemrograman dasar timer dan sensor</li>
+                <li>Pengukuran dan analisis daya listrik</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 2 -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="project-card">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <img src="project2.jpg" class="project-img h-100" alt="Project Sistem Star-Delta">
+              </div>
+              <div class="col-md-6">
+                <div class="project-body h-100">
+                  <h3 class="project-title">Sistem Starting Star-Delta Motor 3 Fasa</h3>
+                  <div class="project-meta">
+                    <span><i class="bi bi-people-fill"></i> Kelompok 2 - Semester 5</span>
+                    <span><i class="bi bi-calendar"></i> September 2024</span>
+                    <span><i class="bi bi-tags"></i> Motor Listrik, Kontrol, 3 Fasa</span>
+                  </div>
+                  <p>Implementasi sistem starting star-delta untuk motor induksi 3 fasa 1.5kW. Project ini mensimulasikan pengasutan motor besar untuk mengurangi arus starting yang tinggi.</p>
+                  <p>Mahasiswa mempelajari prinsip kerja, wiring diagram, dan troubleshooting sistem star-delta yang banyak digunakan di industri.</p>
+                  
+                  <h5 class="mt-4"><i class="bi bi-gear"></i> Komponen Utama</h5>
+                  <ul>
+                    <li>Motor Induksi 3 Fasa 1.5kW</li>
+                    <li>3 Kontaktor (Main, Star, Delta)</li>
+                    <li>Timer Omron H3CR</li>
+                    <li>Thermal Overload Relay</li>
+                    <li>Push Button dan Pilot Lamp</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3 -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="project-card">
+            <img src="project3.jpg" class="project-img" alt="Project Smart Home">
+            <div class="project-body">
+              <h3 class="project-title">Prototipe Sistem Smart Home</h3>
+              <div class="project-meta">
+                <span><i class="bi bi-people-fill"></i> Kelompok 7 - Semester 6</span>
+                <span><i class="bi bi-calendar"></i> Desember 2024</span>
+                <span><i class="bi bi-tags"></i> IoT, Otomasi, Smart Home</span>
+              </div>
+              <p>Prototipe sistem rumah pintar dengan kontrol melalui smartphone dan sensor. Sistem ini mengintegrasikan kontrol penerangan, monitoring daya, dan keamanan.</p>
+              <p>Project ini menggabungkan pengetahuan instalasi listrik dengan teknologi IoT (Internet of Things) terkini.</p>
+              
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <h5><i class="bi bi-lightning"></i> Fitur Utama</h5>
+                  <ul>
+                    <li>Kontrol lampu via smartphone</li>
+                    <li>Monitoring konsumsi daya real-time</li>
+                    <li>Sensor gerak untuk keamanan</li>
+                    <li>Sistem notifikasi via Telegram</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h5><i class="bi bi-cpu"></i> Teknologi Digunakan</h5>
+                  <ul>
+                    <li>NodeMCU ESP8266</li>
+                    <li>Sensor PZEM-004T</li>
+                    <li>Relay Modul 4 Channel</li>
+                    <li>Platform Blynk/Home Assistant</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tombol Kembali -->
+      <div class="text-center mt-5">
+        <a href="index.html" class="btn btn-primary btn-lg">
+          <i class="bi bi-arrow-left"></i> Kembali ke Beranda
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Konsisten -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Lokasi Lab</h4>
+          <p><i class="bi bi-geo-alt-fill me-2"></i> Jl. Trans Sulawesi, Bahodopi</p>
+          <p>Kabupaten Morowali, Sulawesi Tengah</p>
+          <p><i class="bi bi-clock-fill me-2"></i> Senin-Jumat: 08.00 - 16.00 WITA</p>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Tautan Kami</h4>
+          <ul class="footer-links">
+            <li><a href="profil.html"><i class="bi bi-people-fill me-2"></i> Profil Lab</a></li>
+            <li><a href="fasilitas-umum.html"><i class="bi bi-building me-2"></i> Fasilitas</a></li>
+            <li><a href="project.html"><i class="bi bi-lightbulb-fill me-2"></i> Project Lab</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="https://pilm.ac.id"><i class="bi bi-link-45deg me-2"></i> Website PILM</a></li>
+            <li><a href="#"><i class="bi bi-journal-bookmark me-2"></i> Modul Praktikum</a></li>
+            <li><a href="#"><i class="bi bi-calendar-event me-2"></i> Jadwal</a></li>
+          </ul>
+          
+          <div class="mt-4">
+            <h4 class="footer-title">Media Sosial</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Laboratorium Instalasi Listrik - Politeknik Industri Logam Morowali. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Efek scroll header
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
