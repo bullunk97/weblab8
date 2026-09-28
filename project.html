@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Lab - Laboratorium Instalasi Listrik Politeknik Industri Logam Morowali">
+  <title>Project & Riset | Laboratorium Instalasi Listrik</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --navy: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --surface: #f8fafc;
+      --border: #e2e8f0;
+      --accent: #f59e0b;
+      --header-height: 78px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; }
+
+    /* ================= HEADER ================= */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.8);
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled {
+      height: 68px;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 10px 35px rgba(15,23,42,.10);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      color: var(--navy);
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 12px;
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled .brand img {
+      width: 44px;
+      height: 44px;
+    }
+
+    .brand-title {
+      font-size: .98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #334155;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: .65rem .75rem !important;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .dropdown-menu {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 18px 45px rgba(15,23,42,.12);
+    }
+
+    .dropdown-item {
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-size: .86rem;
+      color: var(--text);
+    }
+
+    .dropdown-item:hover {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    /* ================= HERO ================= */
+    .page-hero {
+      position: relative;
+      min-height: 470px;
+      margin-top: var(--header-height);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(115deg, rgba(15,23,42,.93), rgba(8,66,152,.68)),
+        url('project-hero.jpg') center/cover no-repeat;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 0;
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.20);
+      color: #dbeafe;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 850px;
+      margin: 18px 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .hero-description {
+      max-width: 760px;
+      color: #dbeafe;
+      font-size: 1.04rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #fff;
+      font-size: .8rem;
+    }
+
+    /* ================= GENERAL ================= */
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-soft {
+      background: var(--surface);
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    /* ================= PROJECT CARDS ================= */
+    .project-card {
+      height: 100%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(15,23,42,.06);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #bfdbfe;
+      box-shadow: 0 20px 48px rgba(15,23,42,.10);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      display: block;
+      background: #e2e8f0;
+    }
+
+    .project-image-side {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+      background: #e2e8f0;
+    }
+
+    .project-body {
+      padding: 30px;
+    }
+
+    .project-title {
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -.025em;
+      margin-bottom: 13px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: .73rem;
+      font-weight: 600;
+    }
+
+    .meta-tag i {
+      color: var(--primary);
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .detail-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--navy);
+      font-size: .94rem;
+      font-weight: 800;
+      margin: 24px 0 11px;
+    }
+
+    .detail-heading i {
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .component-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 7px;
+    }
+
+    .component-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #475569;
+      font-size: .82rem;
+    }
+
+    .component-list li i {
+      color: var(--primary);
+      margin-top: 4px;
+    }
+
+    /* ================= PROJECT NUMBER ================= */
+    .project-number {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(15,23,42,.82);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .image-container {
+      position: relative;
+    }
+
+    /* ================= SUMMARY ================= */
+    .summary-card {
+      height: 100%;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .summary-icon {
+      width: 50px;
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: 1.35rem;
+      margin-bottom: 17px;
+    }
+
+    .summary-card h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .summary-card p {
+      color: var(--muted);
+      font-size: .83rem;
+      margin: 0;
+    }
+
+    /* ================= CTA ================= */
+    .cta-card {
+      padding: 38px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #0f172a, #084298);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      top: -130px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(255,255,255,.035),
+                  0 0 0 70px rgba(255,255,255,.025);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .cta-card p {
+      color: #cbd5e1;
+      max-width: 700px;
+      font-size: .9rem;
+    }
+
+    .btn-light-custom,
+    .btn-primary-custom,
+    .btn-outline-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .84rem;
+      transition: .2s ease;
+    }
+
+    .btn-light-custom {
+      color: var(--navy);
+      background: #fff;
+    }
+
+    .btn-light-custom:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary-custom {
+      color: #fff;
+      background: var(--primary);
+      border: 0;
+    }
+
+    .btn-primary-custom:hover {
+      color: #fff;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-custom {
+      color: var(--navy);
+      border: 1px solid #cbd5e1;
+      background: #fff;
+    }
+
+    .btn-outline-custom:hover {
+      color: var(--primary);
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 70px 0 28px;
+    }
+
+    .footer-title {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .footer-text,
+    footer li,
+    footer a {
+      color: #94a3b8;
+      font-size: .84rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 10px;
+      color: #cbd5e1;
+      background: rgba(255,255,255,.05);
+      transition: .2s ease;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+      background: rgba(59,130,246,.25);
+      border-color: rgba(147,197,253,.25);
+    }
+
+    .copyright {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      text-align: center;
+      color: #64748b;
+      font-size: .76rem;
+    }
+
+    /* ================= BACK TOP ================= */
+    #backToTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(11,94,215,.28);
+      z-index: 1000;
+    }
+
+    /* ================= REVEAL ================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 991.98px) {
+      .site-header { height: 70px; }
+
+      .navbar-collapse {
+        margin-top: 10px;
+        padding: 12px;
+        background: rgba(255,255,255,.98);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        box-shadow: 0 18px 40px rgba(15,23,42,.10);
+      }
+
+      .page-hero {
+        margin-top: 70px;
+        min-height: 430px;
+      }
+
+      .hero-content { padding: 70px 0; }
+
+      .section { padding: 65px 0; }
+
+      .project-image-side {
+        min-height: 300px;
+        max-height: 360px;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .brand-title { font-size: .84rem; }
+      .brand-subtitle { font-size: .59rem; }
+      .brand img { width: 43px; height: 43px; }
+
+      .hero-title {
+        font-size: 2.35rem;
+      }
+
+      .hero-description {
+        font-size: .93rem;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .meta-pill {
+        font-size: .72rem;
+      }
+
+      .project-image {
+        height: 220px;
+      }
+
+      .project-body {
+        padding: 23px;
+      }
+
+      .project-title {
+        font-size: 1.25rem;
+      }
+
+      .cta-card {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-title { font-size: 2rem; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .section { padding: 55px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="mainHeader">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Laboratorium Instalasi Listrik">
+          <div>
+            <div class="brand-title">Laboratorium Instalasi Listrik</div>
+            <span class="brand-subtitle">Politeknik Industri Logam Morowali</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler ms-auto" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Buka navigasi">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center mt-3 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi bi-house-door me-1"></i> Beranda
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html">
+                <i class="bi bi-building me-1"></i> Profil
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-grid-1x2 me-1"></i> Fasilitas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="fasilitas-umum.html">Fasilitas Umum</a></li>
+                <li><a class="dropdown-item" href="trainer-panel-iml.html">Trainer Panel IML</a></li>
+                <li><a class="dropdown-item" href="trainer-ipl.html">Trainer Panel IPL</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-journal-text me-1"></i> Akademik
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="modul1.pdf" target="_blank">Modul Praktikum 1</a></li>
+                <li><a class="dropdown-item" href="modul2.pdf" target="_blank">Modul Praktikum 2</a></li>
+                <li><a class="dropdown-item" href="mod3.pdf" target="_blank">Modul Praktikum 3</a></li>
+                <li><a class="dropdown-item" href="MODUL PELATIHAN PE.pdf" target="_blank">Modul Pelatihan PE</a></li>
+                <li><a class="dropdown-item" href="komponen_panel.pdf" target="_blank">Komponen Panel</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="jadwal1.pdf" target="_blank">Jadwal Praktikum 1</a></li>
+                <li><a class="dropdown-item" href="jadwal2.pdf" target="_blank">Jadwal Praktikum 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="project.html">
+                <i class="bi bi-lightbulb me-1"></i> Project &amp; Riset
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="Peminjaman-Alatbahan.html">
+                <i class="bi bi-box-seam me-1"></i> Peminjaman
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="eyebrow">
+          <i class="bi bi-lightbulb"></i>
+          Project &amp; Inovasi
+        </span>
+
+        <h1 class="hero-title">Project Lab</h1>
+
+        <p class="hero-description">
+          Karya inovatif mahasiswa Laboratorium Instalasi Listrik yang
+          mengintegrasikan instalasi listrik, sistem kontrol, otomasi,
+          motor listrik, dan teknologi IoT.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-pill"><i class="bi bi-mortarboard"></i> Project Mahasiswa</span>
+          <span class="meta-pill"><i class="bi bi-cpu"></i> Teknologi</span>
+          <span class="meta-pill"><i class="bi bi-lightning-charge"></i> Kelistrikan</span>
+          <span class="meta-pill"><i class="bi bi-diagram-3"></i> Otomasi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OVERVIEW ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <div class="section-label">Karya Mahasiswa</div>
+        <h2 class="section-title">Project Pembelajaran Berbasis Praktik</h2>
+        <p class="section-subtitle mx-auto">
+          Project laboratorium menjadi media untuk mengaplikasikan teori ke dalam
+          rancangan dan prototipe yang dapat diuji secara langsung.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 reveal">
+          <div class="summary-card">
+            <div class="summary-icon"><i class="bi bi-lightning-charge"></i></div>
+            <h3>Instalasi &amp; Kelistrikan</h3>
+            <p>
+              Penerapan rangkaian instalasi, pengawatan, pengukuran, proteksi,
+              dan sistem tenaga listrik.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 reveal">
+          <div class="summary-card">
+            <div class="summary-icon"><i class="bi bi-gear"></i></div>
+            <h3>Kontrol &amp; Otomasi</h3>
+            <p>
+              Pengembangan sistem kontrol menggunakan sensor, timer, kontaktor,
+              relay, PLC mikro, dan perangkat kendali lainnya.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 reveal">
+          <div class="summary-card">
+            <div class="summary-icon"><i class="bi bi-wifi"></i></div>
+            <h3>IoT &amp; Teknologi</h3>
+            <p>
+              Integrasi perangkat listrik dengan mikrokontroler, sensor,
+              komunikasi, dan platform monitoring digital.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="section section-soft" id="projects">
+    <div class="container">
+
+      <div class="text-center mb-5 reveal">
+        <div class="section-label">Daftar Project</div>
+        <h2 class="section-title">Project Laboratorium</h2>
+        <p class="section-subtitle mx-auto">
+          Dokumentasi project yang tercantum pada halaman laboratorium.
+        </p>
+      </div>
+
+      <!-- PROJECT 1 -->
+      <article class="project-card mb-5 reveal">
+        <div class="image-container">
+          <span class="project-number">01</span>
+          <img src="project1.jpg"
+               class="project-image"
+               alt="Panel Otomatisasi Penerangan">
+        </div>
+
+        <div class="project-body">
+          <div class="section-label">Project 01</div>
+          <h3 class="project-title">Panel Otomatisasi Penerangan</h3>
+
+          <div class="project-meta">
+            <span class="meta-tag"><i class="bi bi-people-fill"></i> Kelompok 4 - Semester 4</span>
+            <span class="meta-tag"><i class="bi bi-calendar3"></i> Juni 2024</span>
+            <span class="meta-tag"><i class="bi bi-tags"></i> Otomasi, Penerangan, Sensor</span>
+          </div>
+
+          <p>
+            Project ini merupakan penerapan dari modul instalasi penerangan
+            dengan penggunaan sensor dan sistem otomatis. Panel ini dirancang
+            untuk menyalakan lampu secara otomatis berdasarkan intensitas
+            cahaya dan waktu.
+          </p>
+
+          <p>
+            Mahasiswa belajar merancang rangkaian, mengukur daya, serta
+            memprogram kontroler sederhana. Project ini mengintegrasikan
+            berbagai komponen yang telah dipelajari di laboratorium.
+          </p>
+
+          <p>
+            Sensor IoT untuk tanah &amp; cuaca: Memantau kelembapan, pH tanah,
+            dan kebutuhan pupuk.
+          </p>
+
+          <p>
+            Drone + IoT untuk pemetaan lahan dan penyiraman otomatis.
+          </p>
+
+          <p>
+            Edge AI untuk deteksi hama &amp; penyakit tanaman.
+          </p>
+
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <h4 class="detail-heading">
+                <i class="bi bi-gear"></i> Komponen Utama
+              </h4>
+              <ul class="component-list">
+                <li><i class="bi bi-check2-circle"></i> Sensor LDR (Light Dependent Resistor)</li>
+                <li><i class="bi bi-check2-circle"></i> Timer Relay Digital</li>
+                <li><i class="bi bi-check2-circle"></i> Kontaktor 220V</li>
+                <li><i class="bi bi-check2-circle"></i> MCB 1P 10A</li>
+                <li><i class="bi bi-check2-circle"></i> Lampu LED 20W</li>
+                <li><i class="bi bi-check2-circle"></i> Push Button Start/Stop</li>
+                <li><i class="bi bi-check2-circle"></i> PLC Mikro (Optional)</li>
+                <li><i class="bi bi-check2-circle"></i> Power Supply 12VDC</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6">
+              <h4 class="detail-heading">
+                <i class="bi bi-check-circle"></i> Capaian Pembelajaran
+              </h4>
+              <ul class="component-list">
+                <li><i class="bi bi-check2-circle"></i> Pemahaman sistem kontrol otomatis</li>
+                <li><i class="bi bi-check2-circle"></i> Kemampuan merancang diagram pengawatan</li>
+                <li><i class="bi bi-check2-circle"></i> Pemrograman dasar timer dan sensor</li>
+                <li><i class="bi bi-check2-circle"></i> Pengukuran dan analisis daya listrik</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="project-card mb-5 reveal">
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="image-container h-100">
+              <span class="project-number">02</span>
+              <img src="project2.jpg"
+                   class="project-image-side"
+                   alt="Project Sistem Starting Star-Delta">
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="project-body h-100">
+              <div class="section-label">Project 02</div>
+              <h3 class="project-title">Sistem Starting Star-Delta Motor 3 Fasa</h3>
+
+              <div class="project-meta">
+                <span class="meta-tag"><i class="bi bi-people-fill"></i> Kelompok 2 - Semester 5</span>
+                <span class="meta-tag"><i class="bi bi-calendar3"></i> September 2024</span>
+                <span class="meta-tag"><i class="bi bi-tags"></i> Motor Listrik, Kontrol, 3 Fasa</span>
+              </div>
+
+              <p>
+                Implementasi sistem starting star-delta untuk motor induksi
+                3 fasa 1.5kW. Project ini mensimulasikan pengasutan motor besar
+                untuk mengurangi arus starting yang tinggi.
+              </p>
+
+              <p>
+                Mahasiswa mempelajari prinsip kerja, wiring diagram, dan
+                troubleshooting sistem star-delta yang banyak digunakan di industri.
+              </p>
+
+              <h4 class="detail-heading">
+                <i class="bi bi-gear"></i> Komponen Utama
+              </h4>
+
+              <ul class="component-list">
+                <li><i class="bi bi-check2-circle"></i> Motor Induksi 3 Fasa 1.5kW</li>
+                <li><i class="bi bi-check2-circle"></i> 3 Kontaktor (Main, Star, Delta)</li>
+                <li><i class="bi bi-check2-circle"></i> Timer Omron H3CR</li>
+                <li><i class="bi bi-check2-circle"></i> Thermal Overload Relay</li>
+                <li><i class="bi bi-check2-circle"></i> Push Button dan Pilot Lamp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 -->
+      <article class="project-card reveal">
+        <div class="image-container">
+          <span class="project-number">03</span>
+          <img src="project3.jpg"
+               class="project-image"
+               alt="Prototipe Sistem Smart Home">
+        </div>
+
+        <div class="project-body">
+          <div class="section-label">Project 03</div>
+          <h3 class="project-title">Prototipe Sistem Smart Home</h3>
+
+          <div class="project-meta">
+            <span class="meta-tag"><i class="bi bi-people-fill"></i> Kelompok 7 - Semester 6</span>
+            <span class="meta-tag"><i class="bi bi-calendar3"></i> Desember 2024</span>
+            <span class="meta-tag"><i class="bi bi-tags"></i> IoT, Otomasi, Smart Home</span>
+          </div>
+
+          <p>
+            Prototipe sistem rumah pintar dengan kontrol melalui smartphone
+            dan sensor. Sistem ini mengintegrasikan kontrol penerangan,
+            monitoring daya, dan keamanan.
+          </p>
+
+          <p>
+            Project ini menggabungkan pengetahuan instalasi listrik dengan
+            teknologi IoT (Internet of Things) terkini.
+          </p>
+
+          <div class="row g-4 mt-1">
+            <div class="col-lg-6">
+              <h4 class="detail-heading">
+                <i class="bi bi-lightning"></i> Fitur Utama
+              </h4>
+              <ul class="component-list">
+                <li><i class="bi bi-check2-circle"></i> Kontrol lampu via smartphone</li>
+                <li><i class="bi bi-check2-circle"></i> Monitoring konsumsi daya real-time</li>
+                <li><i class="bi bi-check2-circle"></i> Sensor gerak untuk keamanan</li>
+                <li><i class="bi bi-check2-circle"></i> Sistem notifikasi via Telegram</li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6">
+              <h4 class="detail-heading">
+                <i class="bi bi-cpu"></i> Teknologi Digunakan
+              </h4>
+              <ul class="component-list">
+                <li><i class="bi bi-check2-circle"></i> NodeMCU ESP8266</li>
+                <li><i class="bi bi-check2-circle"></i> Sensor PZEM-004T</li>
+                <li><i class="bi bi-check2-circle"></i> Relay Modul 4 Channel</li>
+                <li><i class="bi bi-check2-circle"></i> Platform Blynk/Home Assistant</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-card reveal">
+        <div class="cta-content">
+          <div class="section-label" style="color:#93c5fd;">Laboratorium</div>
+          <h2>Belajar, Merancang, Menguji, dan Berinovasi</h2>
+          <p>
+            Project laboratorium menjadi bagian dari pembelajaran berbasis praktik
+            untuk menghubungkan konsep kelistrikan dengan penerapan teknologi.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <a href="fasilitas-umum.html" class="btn-light-custom">
+              <i class="bi bi-building"></i> Lihat Fasilitas
+            </a>
+            <a href="trainer-panel-iml.html" class="btn-light-custom">
+              <i class="bi bi-cpu"></i> Trainer IML
+            </a>
+            <a href="trainer-ipl.html" class="btn-light-custom">
+              <i class="bi bi-lightbulb"></i> Trainer IPL
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-lg-4">
+          <h4 class="footer-title">Laboratorium Instalasi Listrik</h4>
+          <p class="footer-text">
+            Laboratorium pembelajaran dan praktik bidang instalasi listrik,
+            sistem kontrol, motor listrik, dan teknologi kelistrikan industri.
+          </p>
+
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <h4 class="footer-title">Lokasi &amp; Kontak</h4>
+          <ul class="footer-links">
+            <li><i class="bi bi-geo-alt me-2"></i> Jl. Trans Sulawesi, Bahodopi</li>
+            <li><i class="bi bi-pin-map me-2"></i> Kabupaten Morowali, Sulawesi Tengah</li>
+            <li><i class="bi bi-clock me-2"></i> Senin-Jumat: 08.00 - 16.00 WITA</li>
+            <li><i class="bi bi-telephone me-2"></i> 085796658212</li>
+            <li><i class="bi bi-envelope me-2"></i> lab.listrik@pilm.ac.id</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="profil.html"><i class="bi bi-building me-2"></i> Profil Lab</a></li>
+            <li><a href="fasilitas-umum.html"><i class="bi bi-grid-1x2 me-2"></i> Fasilitas Umum</a></li>
+            <li><a href="trainer-panel-iml.html"><i class="bi bi-cpu me-2"></i> Trainer IML</a></li>
+            <li><a href="trainer-ipl.html"><i class="bi bi-lightbulb me-2"></i> Trainer IPL</a></li>
+            <li>
+              <a href="https://pilm.ac.id" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-box-arrow-up-right me-2"></i> Website PILM
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Laboratorium Instalasi Listrik - Politeknik Industri Logam Morowali.
+        All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" type="button" aria-label="Kembali ke atas">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Header saat scroll
+    const header = document.getElementById('mainHeader');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // Tutup menu mobile setelah memilih link
+    document.querySelectorAll('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item')
+      .forEach(link => {
+        link.addEventListener('click', () => {
+          const nav = document.getElementById('mainNav');
+          if (nav.classList.contains('show')) {
+            bootstrap.Collapse.getOrCreateInstance(nav).hide();
+          }
+        });
+      });
+
+    // Reveal animation
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('show'));
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 500 ? 'flex' : 'none';
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
