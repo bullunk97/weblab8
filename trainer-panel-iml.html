@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trainer Panel IML - Laboratorium Instalasi Listrik Politeknik Industri Logam Morowali">
+  <title>Trainer Panel IML | Laboratorium Instalasi Listrik</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --navy: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --surface: #f8fafc;
+      --border: #e2e8f0;
+      --accent: #f59e0b;
+      --success: #16a34a;
+      --header-height: 78px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; }
+
+    /* ================= HEADER ================= */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.8);
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled {
+      height: 68px;
+      box-shadow: 0 10px 35px rgba(15,23,42,.10);
+      background: rgba(255,255,255,.97);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      color: var(--navy);
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 12px;
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled .brand img {
+      width: 44px;
+      height: 44px;
+    }
+
+    .brand-title {
+      font-size: .98rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #334155;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: .65rem .75rem !important;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .dropdown-menu {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 18px 45px rgba(15,23,42,.12);
+    }
+
+    .dropdown-item {
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-size: .86rem;
+      color: var(--text);
+    }
+
+    .dropdown-item:hover {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    /* ================= HERO ================= */
+    .page-hero {
+      position: relative;
+      min-height: 480px;
+      margin-top: var(--header-height);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(115deg, rgba(15,23,42,.92), rgba(8,66,152,.70)),
+        url('trainer-iml-hero.jpg') center/cover no-repeat;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 0;
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.20);
+      color: #dbeafe;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 850px;
+      margin: 18px 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.1rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .hero-description {
+      max-width: 760px;
+      color: #dbeafe;
+      font-size: 1.05rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #fff;
+      font-size: .8rem;
+    }
+
+    /* ================= GENERAL ================= */
+    .section {
+      padding: 82px 0;
+    }
+
+    .section-soft {
+      background: var(--surface);
+    }
+
+    .section-label {
+      color: var(--primary);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .intro-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(15,23,42,.06);
+      padding: 34px;
+    }
+
+    .intro-icon {
+      width: 58px;
+      height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      color: var(--primary);
+      background: #eff6ff;
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+
+    .intro-card h3 {
+      color: var(--navy);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    /* ================= CATEGORY ================= */
+    .category-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 48px 0 22px;
+    }
+
+    .category-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .category-heading h3 {
+      color: var(--navy);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .category-heading p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    /* ================= COMPONENT CARDS ================= */
+    .component-card {
+      height: 100%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(15,23,42,.05);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .component-card:hover {
+      transform: translateY(-6px);
+      border-color: #bfdbfe;
+      box-shadow: 0 18px 45px rgba(15,23,42,.10);
+    }
+
+    .component-image-wrap {
+      position: relative;
+      height: 245px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 35%, #fff, #f8fafc 70%);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .component-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 22px;
+      transition: transform .3s ease;
+    }
+
+    .component-card:hover .component-image-wrap img {
+      transform: scale(1.035);
+    }
+
+    .component-body {
+      padding: 25px;
+    }
+
+    .component-title {
+      color: var(--navy);
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
+    .component-description {
+      color: var(--muted);
+      font-size: .87rem;
+      margin-bottom: 16px;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #475569;
+      font-size: .79rem;
+    }
+
+    .spec-list li i {
+      color: var(--primary);
+      margin-top: 3px;
+      flex: 0 0 auto;
+    }
+
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 17px;
+      padding: 9px 13px;
+      border-radius: 9px;
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: .8rem;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .video-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ================= PRAKTIKUM ================= */
+    .practice-card {
+      height: 100%;
+      padding: 27px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .practice-card i {
+      color: var(--primary);
+      font-size: 1.6rem;
+    }
+
+    .practice-card h4 {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 14px 0 7px;
+    }
+
+    .practice-card p {
+      color: var(--muted);
+      font-size: .84rem;
+      margin: 0;
+    }
+
+    /* ================= SAFETY CTA ================= */
+    .safety-box {
+      padding: 30px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #fff7ed, #fffbeb);
+      border: 1px solid #fed7aa;
+    }
+
+    .safety-icon {
+      width: 50px;
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 1.4rem;
+    }
+
+    .safety-box h3 {
+      color: #78350f;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .safety-box p {
+      color: #92400e;
+      font-size: .86rem;
+      margin: 0;
+    }
+
+    .btn-primary-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: .86rem;
+      transition: .2s ease;
+    }
+
+    .btn-primary-custom:hover {
+      color: #fff;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: .86rem;
+      transition: .2s ease;
+    }
+
+    .btn-outline-custom:hover {
+      color: var(--primary);
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 70px 0 28px;
+    }
+
+    .footer-title {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .footer-text,
+    footer li,
+    footer a {
+      color: #94a3b8;
+      font-size: .84rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 10px;
+      color: #cbd5e1;
+      background: rgba(255,255,255,.05);
+      transition: .2s ease;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+      background: rgba(59,130,246,.25);
+      border-color: rgba(147,197,253,.25);
+    }
+
+    .copyright {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      text-align: center;
+      color: #64748b;
+      font-size: .76rem;
+    }
+
+    /* ================= BACK TOP ================= */
+    #backToTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(11,94,215,.28);
+      z-index: 1000;
+    }
+
+    /* ================= REVEAL ================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 991.98px) {
+      .site-header { height: 70px; }
+
+      .navbar-collapse {
+        margin-top: 10px;
+        padding: 12px;
+        background: rgba(255,255,255,.98);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        box-shadow: 0 18px 40px rgba(15,23,42,.10);
+      }
+
+      .navbar-nav .nav-link {
+        padding: .65rem .75rem !important;
+      }
+
+      .page-hero {
+        margin-top: 70px;
+        min-height: 440px;
+      }
+
+      .hero-content { padding: 70px 0; }
+
+      .section { padding: 65px 0; }
+    }
+
+    @media (max-width: 767.98px) {
+      .brand-title { font-size: .84rem; }
+      .brand-subtitle { font-size: .59rem; }
+      .brand img { width: 43px; height: 43px; }
+
+      .hero-title {
+        font-size: 2.35rem;
+      }
+
+      .hero-description {
+        font-size: .93rem;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .meta-pill {
+        font-size: .72rem;
+      }
+
+      .intro-card {
+        padding: 25px;
+      }
+
+      .component-image-wrap {
+        height: 215px;
+      }
+
+      .component-body {
+        padding: 21px;
+      }
+
+      .category-heading {
+        margin-top: 38px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-title { font-size: 2rem; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .section { padding: 55px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="mainHeader">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Laboratorium Instalasi Listrik">
+          <div>
+            <div class="brand-title">Laboratorium Instalasi Listrik</div>
+            <span class="brand-subtitle">Politeknik Industri Logam Morowali</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler ms-auto" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Buka navigasi">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center mt-3 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi bi-house-door me-1"></i> Beranda
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html">
+                <i class="bi bi-building me-1"></i> Profil
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-grid-1x2 me-1"></i> Fasilitas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="fasilitas-umum.html">Fasilitas Umum</a></li>
+                <li><a class="dropdown-item" href="trainer-panel-iml.html">Trainer Panel IML</a></li>
+                <li><a class="dropdown-item" href="trainer-ipl.html">Trainer Panel IPL</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-journal-text me-1"></i> Akademik
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="modul1.pdf" target="_blank">Modul Praktikum 1</a></li>
+                <li><a class="dropdown-item" href="modul2.pdf" target="_blank">Modul Praktikum 2</a></li>
+                <li><a class="dropdown-item" href="mod3.pdf" target="_blank">Modul Praktikum 3</a></li>
+                <li><a class="dropdown-item" href="MODUL PELATIHAN PE.pdf" target="_blank">Modul Pelatihan PE</a></li>
+                <li><a class="dropdown-item" href="komponen_panel.pdf" target="_blank">Komponen Panel</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="jadwal1.pdf" target="_blank">Jadwal Praktikum 1</a></li>
+                <li><a class="dropdown-item" href="jadwal2.pdf" target="_blank">Jadwal Praktikum 2</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="project.html">
+                <i class="bi bi-lightbulb me-1"></i> Project &amp; Riset
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="Peminjaman-Alatbahan.html">
+                <i class="bi bi-box-seam me-1"></i> Peminjaman
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="eyebrow">
+          <i class="bi bi-cpu"></i>
+          Trainer Laboratorium
+        </span>
+
+        <h1 class="hero-title">Trainer Panel IML</h1>
+
+        <p class="hero-description">
+          Instalasi Motor Listrik — media pembelajaran untuk memahami
+          pengendalian motor, proteksi, rangkaian kontrol, inverter,
+          dan instalasi tenaga dalam konteks praktik industri.
+        </p>
+
+        <div class="hero-meta">
+          <span class="meta-pill"><i class="bi bi-lightning-charge"></i> Instalasi Motor Listrik</span>
+          <span class="meta-pill"><i class="bi bi-diagram-3"></i> Sistem Kontrol</span>
+          <span class="meta-pill"><i class="bi bi-shield-check"></i> Proteksi</span>
+          <span class="meta-pill"><i class="bi bi-gear"></i> Motor AC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTRO ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-card reveal">
+        <div class="intro-icon">
+          <i class="bi bi-cpu"></i>
+        </div>
+
+        <div class="section-label">Tentang Trainer</div>
+        <h2 class="section-title">Apa Itu Trainer Panel IML?</h2>
+
+        <p>
+          Trainer Panel IML (Instalasi Motor Listrik) adalah perangkat pembelajaran
+          yang dirancang khusus untuk mempelajari sistem pengendalian motor listrik,
+          inverter, dan instalasi tenaga. Alat ini mensimulasikan berbagai kondisi
+          nyata yang ditemui dalam industri, khususnya di bidang logam.
+        </p>
+
+        <p class="mb-0">
+          Trainer ini digunakan dalam pembelajaran lanjut untuk memahami aplikasi
+          listrik dalam konteks industri, mencakup sistem kontrol dasar hingga
+          otomasi sederhana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPONENTS ================= -->
+  <section class="section section-soft" id="komponen">
+    <div class="container">
+      <div class="text-center mb-4 reveal">
+        <div class="section-label">Peralatan Utama</div>
+        <h2 class="section-title">Komponen Trainer Panel IML</h2>
+        <p class="section-subtitle mx-auto">
+          Komponen yang tersedia pada trainer disusun untuk mendukung praktik
+          instalasi, pengendalian, proteksi, dan pengoperasian motor listrik.
+        </p>
+      </div>
+
+      <!-- CATEGORY 1 -->
+      <div class="category-heading reveal">
+        <div class="category-icon"><i class="bi bi-shield-check"></i></div>
+        <div>
+          <h3>Proteksi &amp; Pengendalian</h3>
+          <p>Perangkat proteksi dan switching untuk rangkaian tenaga serta kontrol.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Kontaktor -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="kontaktor.jpg" alt="Kontaktor">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Kontaktor</h3>
+              <p class="component-description">
+                Komponen elektromekanis yang berfungsi sebagai saklar kontrol untuk
+                menghubungkan dan memutuskan arus listrik ke beban. Digunakan untuk
+                mengendalikan motor listrik secara remote.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan kerja: 220V AC</li>
+                <li><i class="bi bi-check2-circle"></i> Kapasitas arus: 9A - 32A</li>
+                <li><i class="bi bi-check2-circle"></i> Jumlah pole: 3NO</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- MCB -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="mcb.jpg" alt="MCB 1 Fasa dan 3 Fasa">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">MCB (1 Fasa &amp; 3 Fasa)</h3>
+              <p class="component-description">
+                Miniature Circuit Breaker berfungsi sebagai pengaman terhadap arus
+                lebih dan hubung singkat. Terdiri dari MCB 1 fasa untuk kontrol dan
+                penerangan, serta MCB 3 fasa untuk tenaga.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> MCB 1P: 6A, 10A, 16A</li>
+                <li><i class="bi bi-check2-circle"></i> MCB 3P: 16A, 20A, 25A</li>
+                <li><i class="bi bi-check2-circle"></i> Tipe kurva: C (untuk motor)</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- ELCB -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="elcb.jpg" alt="ELCB">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">ELCB</h3>
+              <p class="component-description">
+                Earth Leakage Circuit Breaker sebagai pengaman terhadap kebocoran
+                arus ke tanah yang dapat membahayakan manusia.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Sensitivitas: 30mA</li>
+                <li><i class="bi bi-check2-circle"></i> Tegangan kerja: 220V/380V</li>
+                <li><i class="bi bi-check2-circle"></i> Kapasitas arus: 25A, 40A</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Auxiliary -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="kontaktambah.jpg" alt="Auxiliary Kontak Kontaktor">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Auxiliary Kontak Kontaktor</h3>
+              <p class="component-description">
+                Kontak tambahan pada kontaktor yang berfungsi untuk indikasi status
+                atau interlocking. Terdiri dari NO dan NC.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Kapasitas arus: 5-10A</li>
+                <li><i class="bi bi-check2-circle"></i> Tegangan kerja: hingga 500V</li>
+                <li><i class="bi bi-check2-circle"></i> Mekanisme: mekanik terhubung dengan kontaktor utama</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- OCR -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="ocr.jpg" alt="Over Current Relay">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Over Current Relay</h3>
+              <p class="component-description">
+                Pengaman terhadap arus lebih yang bekerja berdasarkan setting waktu
+                dan besaran arus untuk melindungi motor dari arus berlebih.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Range setting: 0.5-5A (CT 5A)</li>
+                <li><i class="bi bi-check2-circle"></i> Waktu operasi: 2-20 detik</li>
+                <li><i class="bi bi-check2-circle"></i> Tipe: IDMT</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- TOR -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="TOR.jpg" alt="Thermal Overload Relay">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Thermal Overload Relay</h3>
+              <p class="component-description">
+                Pengaman motor terhadap beban lebih dengan prinsip bimetal yang
+                bereaksi terhadap panas akibat arus berlebih.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Range setting: 0.1-1.0 × In</li>
+                <li><i class="bi bi-check2-circle"></i> Kelas trip: 10A, 20A</li>
+                <li><i class="bi bi-check2-circle"></i> Reset: manual/otomatis</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY 2 -->
+      <div class="category-heading reveal">
+        <div class="category-icon"><i class="bi bi-stoplights"></i></div>
+        <div>
+          <h3>Kontrol &amp; Otomasi</h3>
+          <p>Perangkat untuk simulasi rangkaian kontrol manual dan otomatis.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Timer -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="timer.jpg" alt="Timer Omron H3CR">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Timer Omron H3CR</h3>
+              <p class="component-description">
+                Timer digital untuk pengaturan waktu operasi peralatan. Digunakan
+                untuk kontrol otomatis seperti star-delta, sequence control,
+                dan delay operasi.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Range waktu: 0.1 detik - 999 jam</li>
+                <li><i class="bi bi-check2-circle"></i> Mode: On-delay, Off-delay, Interval</li>
+                <li><i class="bi bi-check2-circle"></i> Tegangan kerja: 24-240V AC/DC</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Push Button -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="pushbutton.jpg" alt="Push Button">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Push Button</h3>
+              <p class="component-description">
+                Saklar tekan untuk kontrol manual peralatan. Terdiri dari tombol
+                start dan stop dengan kontak NO dan NC.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan kerja: hingga 600V</li>
+                <li><i class="bi bi-check2-circle"></i> Arus maks: 10A</li>
+                <li><i class="bi bi-check2-circle"></i> Tipe: Momentary/latching</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Emergency Stop -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="emergencystop.jpg" alt="Emergency Stop">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Emergency Stop</h3>
+              <p class="component-description">
+                Tombol darurat untuk mematikan seluruh sistem dalam keadaan bahaya.
+                Memiliki mekanisme locking dan harus di-reset manual.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Warna: merah dengan dasar kuning</li>
+                <li><i class="bi bi-check2-circle"></i> Kontak: NC (Normally Closed)</li>
+                <li><i class="bi bi-check2-circle"></i> Standar: IEC 60947-5-5</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Relay -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="relay.jpg" alt="Relay 220VAC">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Relay 220VAC</h3>
+              <p class="component-description">
+                Relay kontrol untuk switching sinyal kontrol atau daya rendah.
+                Digunakan untuk interlocking dan kontrol logika sederhana.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan coil: 220V AC</li>
+                <li><i class="bi bi-check2-circle"></i> Kontak: 2CO (2 Change Over)</li>
+                <li><i class="bi bi-check2-circle"></i> Kapasitas: 10A 250VAC</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pilot -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="lampupilot.jpg" alt="Lampu Pilot Indikator">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Lampu Pilot Indikator</h3>
+              <p class="component-description">
+                Indikator visual untuk status operasi peralatan. Warna berbeda
+                menunjukkan kondisi berbeda sesuai fungsi indikator.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan: 220V AC</li>
+                <li><i class="bi bi-check2-circle"></i> Warna: merah, kuning, hijau, biru</li>
+                <li><i class="bi bi-check2-circle"></i> Bentuk: bulat, persegi</li>
+                <li><i class="bi bi-check2-circle"></i> Lensa: polycarbonate tahan benturan</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY 3 -->
+      <div class="category-heading reveal">
+        <div class="category-icon"><i class="bi bi-tools"></i></div>
+        <div>
+          <h3>Instalasi Panel</h3>
+          <p>Komponen pendukung pemasangan dan pengelolaan wiring panel.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Dakting -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="dakting.jpg" alt="Dakting Sisir Panel">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Dakting Sisir Panel</h3>
+              <p class="component-description">
+                Sebagai tempat jalur kabel sehingga mengurangi keruwetan wiring
+                dan membantu penataan kabel di dalam panel.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Dinrail -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="dinrail.jpg" alt="Dinrail Komponen Panel">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Dinrail Komponen Panel</h3>
+              <p class="component-description">
+                Rel pemasangan standar untuk komponen panel seperti MCB, kontaktor,
+                dan relay. Memudahkan instalasi dan maintenance.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Material: baja galvanis</li>
+                <li><i class="bi bi-check2-circle"></i> Panjang: 35mm per modul</li>
+                <li><i class="bi bi-check2-circle"></i> Tipe: TS35 (Top Hat Section)</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <!-- CATEGORY 4 -->
+      <div class="category-heading reveal">
+        <div class="category-icon"><i class="bi bi-speedometer2"></i></div>
+        <div>
+          <h3>Penggerak &amp; Motor</h3>
+          <p>Perangkat utama untuk praktik pengendalian dan pengoperasian motor listrik.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Inverter -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="inverter.jpg" alt="Inverter Wecon 3 Fasa ke 3 Fasa">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Inverter Wecon 3 Fasa ke 3 Fasa</h3>
+              <p class="component-description">
+                Variable Frequency Drive (VFD) untuk mengontrol kecepatan motor
+                induksi 3 fasa dengan mengubah frekuensi dan tegangan suplai.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Daya: 0.75kW - 7.5kW</li>
+                <li><i class="bi bi-check2-circle"></i> Input: 3 fase 380VAC</li>
+                <li><i class="bi bi-check2-circle"></i> Output: 3 fase 0-400V, 0-400Hz</li>
+                <li><i class="bi bi-check2-circle"></i> Fitur: PID control, RS485 communication</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Motor 3 phase -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="motor3.jpg" alt="Motor induksi 3 phase">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Motor Induksi 3 Phase</h3>
+              <p class="component-description">
+                Motor induksi 3 phase sebagai pengubah energi listrik menjadi
+                energi putar/gerak yang dapat digunakan sebagai alat bantu
+                manusia sesuai fungsi dan prinsipnya.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan: 380/220V AC</li>
+                <li><i class="bi bi-check2-circle"></i> Daya: 0,75 kW</li>
+                <li><i class="bi bi-check2-circle"></i> 4 pole</li>
+                <li><i class="bi bi-check2-circle"></i> Arus: 3.5/2.1 A</li>
+                <li><i class="bi bi-check2-circle"></i> Frekuensi: 50 Hz</li>
+              </ul>
+              <a class="video-btn" href="https://www.youtube.com/watch?v=Y2AXQ9QsnVY"
+                 target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-youtube"></i> Putar Video Tutorial
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Motor 1 phase -->
+        <div class="col-md-6 col-xl-4 reveal">
+          <article class="component-card">
+            <div class="component-image-wrap">
+              <img src="motor1.jpeg" alt="Motor induksi 1 phase">
+            </div>
+            <div class="component-body">
+              <h3 class="component-title">Motor Induksi 1 Phase</h3>
+              <p class="component-description">
+                Motor induksi 1 phase sebagai pengubah energi listrik 1 phase
+                menjadi energi putar/gerak yang dapat digunakan sebagai alat bantu
+                manusia sesuai fungsi dan prinsipnya.
+              </p>
+              <ul class="spec-list">
+                <li><i class="bi bi-check2-circle"></i> Tegangan: 220V AC</li>
+                <li><i class="bi bi-check2-circle"></i> Daya: 0,75 kW</li>
+                <li><i class="bi bi-check2-circle"></i> 4 pole</li>
+                <li><i class="bi bi-check2-circle"></i> Arus: 7.1A</li>
+                <li><i class="bi bi-check2-circle"></i> Frekuensi: 50 Hz</li>
+              </ul>
+              <a class="video-btn" href="https://www.youtube.com/watch?v=awrUxv7B-a8"
+                 target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-youtube"></i> Putar Video Tutorial
+              </a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRAKTIKUM ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <div class="section-label">Pemanfaatan Trainer</div>
+        <h2 class="section-title">Ruang Lingkup Praktikum IML</h2>
+        <p class="section-subtitle mx-auto">
+          Trainer IML mendukung pembelajaran bertahap dari rangkaian kontrol,
+          proteksi, hingga pengoperasian motor listrik.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="practice-card">
+            <i class="bi bi-diagram-3"></i>
+            <h4>Rangkaian Kontrol</h4>
+            <p>Praktik start-stop, interlocking, auxiliary contact, relay, dan rangkaian kontrol dasar.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="practice-card">
+            <i class="bi bi-shield-check"></i>
+            <h4>Sistem Proteksi</h4>
+            <p>Pengenalan MCB, ELCB, OCR, thermal overload relay, dan emergency stop.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="practice-card">
+            <i class="bi bi-speedometer2"></i>
+            <h4>Motor Listrik</h4>
+            <p>Praktik pengoperasian motor induksi 1 phase dan 3 phase serta karakteristiknya.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="practice-card">
+            <i class="bi bi-sliders"></i>
+            <h4>Pengaturan Kecepatan</h4>
+            <p>Pengenalan inverter/VFD untuk pengaturan frekuensi dan kecepatan motor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAFETY ================= -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="safety-box reveal">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <div class="d-flex gap-3">
+              <div class="safety-icon flex-shrink-0">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+              <div>
+                <h3>Keselamatan Kerja Prioritas Utama</h3>
+                <p>
+                  Pengoperasian trainer melibatkan rangkaian listrik 220/380 VAC
+                  dan peralatan motor. Praktikum harus dilakukan sesuai SOP,
+                  menggunakan APD yang sesuai, serta di bawah pengawasan instruktur
+                  atau tenaga laboratorium.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 text-lg-end">
+            <a href="profil.html#sop" class="btn-outline-custom">
+              <i class="bi bi-shield-check"></i> Lihat SOP &amp; K3
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-card reveal text-center">
+        <div class="section-label">Eksplorasi Lab</div>
+        <h2 class="section-title">Jelajahi Fasilitas Lainnya</h2>
+        <p class="section-subtitle mx-auto mb-4">
+          Lihat fasilitas umum laboratorium atau pelajari Trainer Panel IPL
+          untuk instalasi penerangan listrik.
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a href="fasilitas-umum.html" class="btn-primary-custom">
+            <i class="bi bi-building"></i> Fasilitas Umum
+          </a>
+          <a href="trainer-ipl.html" class="btn-outline-custom">
+            <i class="bi bi-lightbulb"></i> Trainer Panel IPL
+          </a>
+          <a href="index.html" class="btn-outline-custom">
+            <i class="bi bi-house"></i> Beranda
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-lg-4">
+          <h4 class="footer-title">Laboratorium Instalasi Listrik</h4>
+          <p class="footer-text">
+            Laboratorium pembelajaran dan praktik bidang instalasi listrik,
+            sistem kontrol, motor listrik, dan teknologi kelistrikan industri.
+          </p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <h4 class="footer-title">Lokasi &amp; Kontak</h4>
+          <ul class="footer-links">
+            <li><i class="bi bi-geo-alt me-2"></i> Jl. Trans Sulawesi, Bahodopi</li>
+            <li><i class="bi bi-pin-map me-2"></i> Kabupaten Morowali, Sulawesi Tengah</li>
+            <li><i class="bi bi-clock me-2"></i> Senin-Jumat: 08.00 - 16.00 WITA</li>
+            <li><i class="bi bi-telephone me-2"></i> 085796658212</li>
+            <li><i class="bi bi-envelope me-2"></i> lab.listrik@pilm.ac.id</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <ul class="footer-links">
+            <li><a href="profil.html"><i class="bi bi-building me-2"></i> Profil Lab</a></li>
+            <li><a href="fasilitas-umum.html"><i class="bi bi-grid-1x2 me-2"></i> Fasilitas Umum</a></li>
+            <li><a href="trainer-ipl.html"><i class="bi bi-lightbulb me-2"></i> Trainer IPL</a></li>
+            <li><a href="project.html"><i class="bi bi-lightbulb-fill me-2"></i> Project &amp; Riset</a></li>
+            <li><a href="https://pilm.ac.id" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-box-arrow-up-right me-2"></i> Website PILM
+            </a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Laboratorium Instalasi Listrik - Politeknik Industri Logam Morowali.
+        All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" type="button" aria-label="Kembali ke atas">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Header saat scroll
+    const header = document.getElementById('mainHeader');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // Tutup menu mobile setelah memilih link
+    document.querySelectorAll('#mainNav .nav-link:not(.dropdown-toggle), #mainNav .dropdown-item')
+      .forEach(link => {
+        link.addEventListener('click', () => {
+          const nav = document.getElementById('mainNav');
+          if (nav.classList.contains('show')) {
+            bootstrap.Collapse.getOrCreateInstance(nav).hide();
+          }
+        });
+      });
+
+    // Reveal animation
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('show'));
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 500 ? 'flex' : 'none';
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
