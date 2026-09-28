@@ -1,0 +1,3254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Laboratorium Instalasi Listrik Politeknik Industri Logam Morowali - pusat pembelajaran, praktikum, eksperimen, dan pengembangan kompetensi teknologi kelistrikan industri.">
+    <meta name="theme-color" content="#0b5ed7">
+
+    <title>Laboratorium Instalasi Listrik | PILM</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* =========================================================
+           DESIGN SYSTEM
+        ========================================================= */
+        :root {
+            --primary: #0b5ed7;
+            --primary-dark: #084298;
+            --primary-soft: #eff6ff;
+
+            --navy: #0f172a;
+            --dark: #111827;
+            --text: #475569;
+            --muted: #64748b;
+
+            --white: #ffffff;
+            --surface: #f8fafc;
+            --surface-2: #f1f5f9;
+            --border: #e2e8f0;
+
+            --accent: #f59e0b;
+            --success: #16a34a;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 30px;
+
+            --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.12);
+
+            --header-height: 76px;
+            --container-width: 1200px;
+        }
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* =========================================================
+           HEADER / NAVBAR
+        ========================================================= */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 9999;
+
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            height: 68px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .navbar {
+            height: 100%;
+            padding: 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--navy);
+            min-width: 0;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            line-height: 1.2;
+        }
+
+        .brand-title {
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -0.025em;
+        }
+
+        .brand-subtitle {
+            font-size: 0.69rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-custom {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 13px;
+
+            color: #334155;
+            font-size: 0.86rem;
+            font-weight: 600;
+
+            border-radius: 9px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link-custom:hover,
+        .nav-link-custom.active {
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .nav-link-custom .bi-chevron-down {
+            font-size: 0.65rem;
+        }
+
+        .dropdown-menu {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 8px;
+            margin-top: 12px !important;
+            min-width: 230px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dropdown-item {
+            border-radius: 9px;
+            padding: 10px 12px;
+            font-size: 0.84rem;
+            color: #334155;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            color: var(--primary);
+            background: var(--primary-soft);
+            transform: translateX(2px);
+        }
+
+        .navbar-toggler {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--navy);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler:focus {
+            border-color: var(--primary);
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+        .hero {
+            position: relative;
+            min-height: 760px;
+            height: 90vh;
+            max-height: 900px;
+            margin-top: var(--header-height);
+            overflow: hidden;
+            background: #020617;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.04);
+            transition:
+                opacity 1.2s ease,
+                transform 7s ease;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .hero-slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 6, 23, 0.90) 0%,
+                    rgba(2, 6, 23, 0.70) 42%,
+                    rgba(2, 6, 23, 0.25) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            min-height: 760px;
+            height: 90vh;
+            max-height: 900px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-copy {
+            max-width: 720px;
+            color: #fff;
+            padding-bottom: 30px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 13px;
+            margin-bottom: 22px;
+
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,.24);
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(10px);
+
+            color: rgba(255,255,255,.92);
+            font-size: 0.79rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34,197,94,.14);
+        }
+
+        .hero-title {
+            font-size: clamp(2.7rem, 5.4vw, 5rem);
+            line-height: 1.04;
+            font-weight: 800;
+            letter-spacing: -0.055em;
+            margin-bottom: 22px;
+        }
+
+        .hero-title span {
+            color: #93c5fd;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: rgba(255,255,255,.82);
+            font-size: clamp(1rem, 1.6vw, 1.18rem);
+            line-height: 1.75;
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 13px 19px;
+            min-height: 48px;
+
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+
+            font-size: 0.88rem;
+            font-weight: 700;
+
+            box-shadow: 0 10px 25px rgba(11,94,215,.28);
+            transition: all 0.25s ease;
+        }
+
+        .btn-main:hover {
+            color: #fff;
+            background: #0a58ca;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 32px rgba(11,94,215,.35);
+        }
+
+        .btn-outline-light-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 12px 18px;
+            min-height: 48px;
+
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,.30);
+            background: rgba(255,255,255,.08);
+            color: #fff;
+
+            font-size: 0.88rem;
+            font-weight: 700;
+
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline-light-custom:hover {
+            color: var(--navy);
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-top: 38px;
+            color: rgba(255,255,255,.68);
+            font-size: 0.76rem;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .hero-meta i {
+            color: #93c5fd;
+        }
+
+        .hero-indicators {
+            position: absolute;
+            z-index: 5;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .hero-indicator {
+            width: 26px;
+            height: 4px;
+            border: 0;
+            border-radius: 10px;
+            background: rgba(255,255,255,.35);
+            transition: all .3s ease;
+            cursor: pointer;
+        }
+
+        .hero-indicator.active {
+            width: 48px;
+            background: #fff;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            z-index: 5;
+            right: 34px;
+            bottom: 27px;
+            color: rgba(255,255,255,.70);
+            font-size: 0.72rem;
+            writing-mode: vertical-rl;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .hero-scroll::before {
+            content: "";
+            width: 1px;
+            height: 45px;
+            background: rgba(255,255,255,.45);
+        }
+
+        /* =========================================================
+           QUICK ACCESS
+        ========================================================= */
+        .quick-access {
+            position: relative;
+            z-index: 10;
+            margin-top: -55px;
+        }
+
+        .quick-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow-lg);
+            padding: 9px;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .quick-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 18px 20px;
+            color: var(--navy);
+            border-radius: 12px;
+            transition: all .25s ease;
+        }
+
+        .quick-item:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .quick-icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .quick-item strong {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .quick-item span {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 0.72rem;
+        }
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+        .section {
+            padding: 105px 0;
+        }
+
+        .section-soft {
+            background: var(--surface);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: .10em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            color: var(--navy);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.12;
+            letter-spacing: -0.045em;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .section-heading-center {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 52px;
+        }
+
+        .section-heading-center .section-description {
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+        .stats-section {
+            padding: 76px 0;
+            background: var(--navy);
+            color: #fff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px 25px;
+            border-right: 1px solid rgba(255,255,255,.10);
+        }
+
+        .stat-item:last-child {
+            border-right: 0;
+        }
+
+        .stat-number {
+            display: block;
+            color: #fff;
+            font-size: clamp(2.1rem, 4vw, 3.2rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .stat-label {
+            display: block;
+            margin-top: 9px;
+            color: rgba(255,255,255,.58);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+        .about-image-wrap {
+            position: relative;
+            padding-right: 25px;
+            padding-bottom: 25px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 470px;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image-wrap::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(11,94,215,.95),
+                    rgba(8,66,152,.95)
+                );
+            z-index: -1;
+        }
+
+        .about-content {
+            padding-left: 20px;
+        }
+
+        .about-points {
+            list-style: none;
+            margin: 28px 0 0;
+            padding: 0;
+        }
+
+        .about-points li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .about-points i {
+            flex-shrink: 0;
+            color: var(--success);
+            font-size: 1.05rem;
+            margin-top: 3px;
+        }
+
+        /* =========================================================
+           FACILITIES
+        ========================================================= */
+        .facility-card {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(11,94,215,.22);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .facility-image {
+            position: relative;
+            height: 235px;
+            overflow: hidden;
+            background: var(--surface-2);
+        }
+
+        .facility-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .55s ease;
+        }
+
+        .facility-card:hover .facility-image img {
+            transform: scale(1.05);
+        }
+
+        .facility-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+            background: rgba(15,23,42,.72);
+            backdrop-filter: blur(8px);
+
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .facility-content {
+            padding: 24px;
+        }
+
+        .facility-category {
+            color: var(--primary);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .facility-content h3 {
+            color: var(--navy);
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin: 7px 0 9px;
+        }
+
+        .facility-content p {
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.7;
+            margin-bottom: 17px;
+        }
+
+        .facility-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--primary);
+            font-size: 0.79rem;
+            font-weight: 700;
+        }
+
+        .facility-link i {
+            transition: transform .2s ease;
+        }
+
+        .facility-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* =========================================================
+           PROGRAMS
+        ========================================================= */
+        .program-card {
+            height: 100%;
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: #fff;
+            transition: all .25s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(11,94,215,.20);
+        }
+
+        .program-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 13px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .program-card h3 {
+            color: var(--navy);
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .program-card p {
+            color: var(--muted);
+            font-size: 0.8rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =========================================================
+           PROJECT
+        ========================================================= */
+        .project-section {
+            position: relative;
+            overflow: hidden;
+            background: var(--navy);
+        }
+
+        .project-section::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            right: -200px;
+            top: -230px;
+            background: rgba(11,94,215,.20);
+            filter: blur(5px);
+        }
+
+        .project-section .section-label {
+            color: #93c5fd;
+        }
+
+        .project-section .section-label::before {
+            background: #60a5fa;
+        }
+
+        .project-section .section-title {
+            color: #fff;
+        }
+
+        .project-section .section-description {
+            color: rgba(255,255,255,.60);
+        }
+
+        .project-card {
+            position: relative;
+            height: 100%;
+            min-height: 270px;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,.10);
+            background: rgba(255,255,255,.06);
+            transition: all .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,.09);
+            border-color: rgba(147,197,253,.35);
+        }
+
+        .project-image {
+            height: 170px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-body h3 {
+            color: #fff;
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .project-body p {
+            color: rgba(255,255,255,.56);
+            font-size: 0.77rem;
+            margin: 0;
+        }
+
+        /* =========================================================
+           GALLERY
+        ========================================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 190px;
+            gap: 14px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--surface-2);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 18px;
+            background: linear-gradient(
+                transparent 35%,
+                rgba(2,6,23,.80)
+            );
+            color: #fff;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           SAFETY / CTA
+        ========================================================= */
+        .safety-card {
+            padding: 40px;
+            border-radius: 22px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #f8fafc
+                );
+            border: 1px solid #dbeafe;
+        }
+
+        .safety-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+            background: #dbeafe;
+            color: var(--primary);
+            font-size: 1.45rem;
+            margin-bottom: 20px;
+        }
+
+        .safety-card h3 {
+            color: var(--navy);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .safety-card p {
+            color: var(--muted);
+            font-size: 0.87rem;
+            max-width: 760px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+        .site-footer {
+            background: #020617;
+            color: #fff;
+            padding-top: 75px;
+        }
+
+        .footer-brand {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .footer-description {
+            color: rgba(255,255,255,.50);
+            font-size: 0.8rem;
+            max-width: 350px;
+        }
+
+        .footer-title {
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.52);
+            font-size: 0.78rem;
+            transition: color .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-contact {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin-bottom: 12px;
+            color: rgba(255,255,255,.52);
+            font-size: 0.78rem;
+        }
+
+        .footer-contact i {
+            color: #60a5fa;
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,.10);
+            background: rgba(255,255,255,.04);
+            color: rgba(255,255,255,.70);
+
+            transition: all .2s ease;
+        }
+
+        .social-link:hover {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            margin-top: 55px;
+            padding: 22px 0;
+            border-top: 1px solid rgba(255,255,255,.08);
+            color: rgba(255,255,255,.38);
+            font-size: 0.7rem;
+        }
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 999;
+
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 12px;
+
+            background: var(--primary);
+            color: #fff;
+
+            box-shadow: var(--shadow-md);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+
+            transition: all .25s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE TABLET
+        ========================================================= */
+        @media (max-width: 1199px) {
+            .nav-list {
+                gap: 0;
+            }
+
+            .nav-link-custom {
+                padding: 9px 10px;
+                font-size: 0.80rem;
+            }
+
+            .quick-item {
+                padding: 17px 14px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            :root {
+                --header-height: 70px;
+            }
+
+            .main-header {
+                height: var(--header-height);
+            }
+
+            .main-header.scrolled {
+                height: 64px;
+            }
+
+            .navbar-collapse {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 12px;
+                right: 12px;
+
+                padding: 10px;
+
+                background: rgba(255,255,255,.98);
+                backdrop-filter: blur(18px);
+
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-list .nav-item {
+                width: 100%;
+            }
+
+            .nav-link-custom {
+                width: 100%;
+                justify-content: space-between;
+                padding: 12px 13px;
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                box-shadow: none;
+                border: 0;
+                background: var(--surface);
+                margin: 3px 0 5px !important;
+            }
+
+            .hero {
+                min-height: 700px;
+                height: 82vh;
+            }
+
+            .hero-content {
+                min-height: 700px;
+                height: 82vh;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 7vw, 4rem);
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat-item:nth-child(-n+2) {
+                border-bottom: 1px solid rgba(255,255,255,.10);
+                padding-bottom: 28px;
+            }
+
+            .stat-item:nth-child(n+3) {
+                padding-top: 28px;
+            }
+
+            .about-content {
+                padding-left: 0;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =========================================================
+           RESPONSIVE MOBILE
+        ========================================================= */
+        @media (max-width: 767.98px) {
+            html {
+                scroll-padding-top: 78px;
+            }
+
+            .container {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .brand-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-title {
+                font-size: 0.78rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.60rem;
+            }
+
+            .hero {
+                min-height: 690px;
+                height: 86vh;
+            }
+
+            .hero-content {
+                min-height: 690px;
+                height: 86vh;
+                align-items: flex-end;
+                padding-bottom: 85px;
+            }
+
+            .hero-copy {
+                padding-bottom: 0;
+            }
+
+            .hero-badge {
+                font-size: 0.68rem;
+                padding: 7px 11px;
+                margin-bottom: 17px;
+            }
+
+            .hero-title {
+                font-size: clamp(2.25rem, 11vw, 3.2rem);
+                letter-spacing: -0.06em;
+                margin-bottom: 17px;
+            }
+
+            .hero-description {
+                font-size: 0.88rem;
+                line-height: 1.7;
+                margin-bottom: 23px;
+            }
+
+            .hero-actions {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 9px;
+            }
+
+            .btn-main,
+            .btn-outline-light-custom {
+                width: 100%;
+                min-height: 48px;
+            }
+
+            .hero-meta {
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                margin-top: 25px;
+                font-size: 0.68rem;
+            }
+
+            .hero-indicators {
+                bottom: 25px;
+            }
+
+            .hero-scroll {
+                display: none;
+            }
+
+            .quick-access {
+                margin-top: -32px;
+            }
+
+            .quick-card {
+                border-radius: 16px;
+                padding: 6px;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-item {
+                padding: 13px 10px;
+                gap: 9px;
+            }
+
+            .quick-icon {
+                width: 37px;
+                height: 37px;
+                border-radius: 9px;
+                font-size: 1rem;
+            }
+
+            .quick-item strong {
+                font-size: 0.70rem;
+            }
+
+            .quick-item span {
+                font-size: 0.60rem;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-description {
+                font-size: 0.86rem;
+            }
+
+            .section-heading-center {
+                margin-bottom: 35px;
+            }
+
+            .stats-section {
+                padding: 52px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.66rem;
+            }
+
+            .about-image-wrap {
+                padding-right: 12px;
+                padding-bottom: 12px;
+                margin-bottom: 35px;
+            }
+
+            .about-image {
+                height: 300px;
+                border-radius: 17px;
+            }
+
+            .about-image-wrap::after {
+                width: 100px;
+                height: 100px;
+                border-radius: 13px;
+            }
+
+            .about-points li {
+                font-size: 0.82rem;
+            }
+
+            .facility-image {
+                height: 210px;
+            }
+
+            .facility-content {
+                padding: 20px;
+            }
+
+            .program-card {
+                padding: 21px;
+            }
+
+            .project-card {
+                min-height: 250px;
+            }
+
+            .project-image {
+                height: 155px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 140px;
+                gap: 9px;
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+
+            .gallery-overlay {
+                opacity: 1;
+                padding: 10px;
+            }
+
+            .gallery-overlay span {
+                font-size: 0.65rem;
+            }
+
+            .safety-card {
+                padding: 25px 21px;
+                border-radius: 17px;
+            }
+
+            .safety-card h3 {
+                font-size: 1.15rem;
+            }
+
+            .safety-card p {
+                font-size: 0.80rem;
+            }
+
+            .site-footer {
+                padding-top: 55px;
+            }
+
+            .footer-column {
+                margin-bottom: 28px;
+            }
+
+            .footer-bottom {
+                margin-top: 20px;
+                padding-bottom: 85px;
+            }
+
+            .back-to-top {
+                width: 42px;
+                height: 42px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+        @media (max-width: 390px) {
+            .brand-title {
+                font-size: 0.72rem;
+            }
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero-content {
+                min-height: 650px;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .hero-description {
+                font-size: 0.82rem;
+            }
+
+            .quick-item {
+                padding: 11px 8px;
+            }
+
+            .quick-item span {
+                display: none;
+            }
+        }
+
+        /* =========================================================
+           ACCESSIBILITY / REDUCED MOTION
+        ========================================================= */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =============================================================
+     HEADER
+============================================================= -->
+<header class="main-header" id="mainHeader">
+
+    <div class="container h-100">
+
+        <nav class="navbar navbar-expand-lg">
+
+            <a href="index.html" class="brand">
+
+                <!-- Tetap gunakan logo.png milik project lama -->
+                <img
+                    src="logo.png"
+                    class="brand-logo"
+                    alt="Logo Politeknik Industri Logam Morowali"
+                >
+
+                <div class="brand-text">
+                    <div class="brand-title">
+                        Laboratorium Instalasi Listrik
+                    </div>
+
+                    <div class="brand-subtitle">
+                        Politeknik Industri Logam Morowali
+                    </div>
+                </div>
+
+            </a>
+
+            <button
+                class="navbar-toggler ms-auto"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavigation"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+                aria-label="Buka menu navigasi"
+            >
+                <i class="bi bi-list fs-5"></i>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
+
+                <ul class="nav-list mt-3 mt-lg-0">
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link-custom active">
+                            Beranda
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="profil.html" class="nav-link-custom">
+                            Profil
+                        </a>
+                    </li>
+
+                    <!-- FASILITAS -->
+                    <li class="nav-item dropdown">
+
+                        <a
+                            href="#"
+                            class="nav-link-custom dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Fasilitas
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="fasilitas-umum.html">
+                                    <i class="bi bi-building me-2"></i>
+                                    Fasilitas Umum
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="trainer-panel-iml.html">
+                                    <i class="bi bi-lightning-charge me-2"></i>
+                                    Trainer Panel IML
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="trainer-ipl.html">
+                                    <i class="bi bi-lamp me-2"></i>
+                                    Trainer IPL
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <!-- AKADEMIK -->
+                    <li class="nav-item dropdown">
+
+                        <a
+                            href="#"
+                            class="nav-link-custom dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Akademik
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="modul1.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-journal-text me-2"></i>
+                                    Modul IL1
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="modul2.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-journal-text me-2"></i>
+                                    Modul IL2
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="mod3.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-journal-text me-2"></i>
+                                    Modul SPTL
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="MODUL PELATIHAN PE.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-book me-2"></i>
+                                    Modul Pelatihan
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="jadwal1.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-calendar3 me-2"></i>
+                                    Jadwal Semester 1 & 3
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="jadwal2.pdf" target="_blank" rel="noopener">
+                                    <i class="bi bi-calendar3 me-2"></i>
+                                    Jadwal Semester 2 & 4
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="project.html" class="nav-link-custom">
+                            Project & Riset
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#dokumentasi" class="nav-link-custom">
+                            Dokumentasi
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#kontak" class="nav-link-custom">
+                            Kontak
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =============================================================
+     HERO
+============================================================= -->
+<section class="hero" id="beranda">
+
+    <!-- Ganti file gambar jika nama file Anda berbeda -->
+    <div
+        class="hero-slide active"
+        style="background-image: url('slide11.jpg');"
+        data-slide="0"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide2.jpg');"
+        data-slide="1"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide3.jpg');"
+        data-slide="2"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide4.jpg');"
+        data-slide="3"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide5.jpg');"
+        data-slide="4"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide6.jpg');"
+        data-slide="5"
+    ></div>
+
+    <div
+        class="hero-slide"
+        style="background-image: url('slide7.jpg');"
+        data-slide="6"
+    ></div>
+
+
+    <div class="container hero-content">
+
+        <div class="hero-copy">
+
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                Laboratorium Pendidikan & Riset
+            </div>
+
+            <h1 class="hero-title">
+                Laboratorium
+                <span>Instalasi Listrik</span>
+            </h1>
+
+            <p class="hero-description">
+                Pusat pembelajaran, praktikum, eksperimen, dan pengembangan
+                kompetensi teknologi kelistrikan industri di Politeknik Industri
+                Logam Morowali.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#fasilitas" class="btn-main">
+                    Jelajahi Laboratorium
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a href="profil.html" class="btn-outline-light-custom">
+                    <i class="bi bi-play-circle"></i>
+                    Kenali Laboratorium
+                </a>
+
+            </div>
+
+            <div class="hero-meta">
+
+                <span>
+                    <i class="bi bi-geo-alt"></i>
+                    Morowali, Sulawesi Tengah
+                </span>
+
+                <span>
+                    <i class="bi bi-lightning-charge"></i>
+                    Teknologi Kelistrikan Industri
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Indicators -->
+    <div class="hero-indicators">
+
+        <button class="hero-indicator active" data-slide="0" aria-label="Slide 1"></button>
+        <button class="hero-indicator" data-slide="1" aria-label="Slide 2"></button>
+        <button class="hero-indicator" data-slide="2" aria-label="Slide 3"></button>
+        <button class="hero-indicator" data-slide="3" aria-label="Slide 4"></button>
+        <button class="hero-indicator" data-slide="4" aria-label="Slide 5"></button>
+        <button class="hero-indicator" data-slide="5" aria-label="Slide 6"></button>
+        <button class="hero-indicator" data-slide="6" aria-label="Slide 7"></button>
+
+    </div>
+
+    <div class="hero-scroll">
+        Scroll untuk menjelajah
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     QUICK ACCESS
+============================================================= -->
+<section class="quick-access">
+
+    <div class="container">
+
+        <div class="quick-card">
+
+            <div class="quick-grid">
+
+                <a href="modul1.pdf" target="_blank" rel="noopener" class="quick-item">
+
+                    <div class="quick-icon">
+                        <i class="bi bi-journal-bookmark"></i>
+                    </div>
+
+                    <div>
+                        <strong>Modul Praktikum</strong>
+                        <span>Akses materi</span>
+                    </div>
+
+                </a>
+
+
+                <a href="jadwal1.pdf" target="_blank" rel="noopener" class="quick-item">
+
+                    <div class="quick-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </div>
+
+                    <div>
+                        <strong>Jadwal Praktikum</strong>
+                        <span>Lihat jadwal</span>
+                    </div>
+
+                </a>
+
+
+                <a href="Peminjaman-Alatbahan.html" class="quick-item">
+
+                    <div class="quick-icon">
+                        <i class="bi bi-tools"></i>
+                    </div>
+
+                    <div>
+                        <strong>Peminjaman Alat</strong>
+                        <span>Ajukan peminjaman</span>
+                    </div>
+
+                </a>
+
+
+                <a href="profil.html#sop" class="quick-item">
+
+                    <div class="quick-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>SOP & K3</strong>
+                        <span>Keselamatan kerja</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     STATISTICS
+============================================================= -->
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat-item reveal">
+                <span class="stat-number">8+</span>
+                <span class="stat-label">Trainer Panel IML</span>
+            </div>
+
+            <div class="stat-item reveal">
+                <span class="stat-number">8+</span>
+                <span class="stat-label">Trainer Panel IPL</span>
+            </div>
+
+            <div class="stat-item reveal">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Alat Ukur Digital</span>
+            </div>
+
+            <div class="stat-item reveal">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Bidang Praktikum</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     ABOUT
+============================================================= -->
+<section class="section" id="tentang">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6 reveal">
+
+                <div class="about-image-wrap">
+
+                    <img
+                        src="slide2.jpg"
+                        alt="Laboratorium Instalasi Listrik PILM"
+                        class="about-image"
+                        loading="lazy"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 reveal">
+
+                <div class="about-content">
+
+                    <div class="section-label">
+                        Tentang Laboratorium
+                    </div>
+
+                    <h2 class="section-title">
+                        Ruang belajar untuk teknologi kelistrikan industri.
+                    </h2>
+
+                    <p class="section-description">
+                        Laboratorium Instalasi Listrik merupakan lingkungan
+                        pembelajaran yang mendukung kegiatan praktikum,
+                        eksperimen, pengembangan keterampilan, dan project
+                        mahasiswa di bidang kelistrikan.
+                    </p>
+
+                    <ul class="about-points">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>
+                                Mendukung pembelajaran instalasi dan sistem
+                                kontrol kelistrikan.
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>
+                                Menyediakan trainer dan peralatan pengukuran
+                                untuk kegiatan praktikum.
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>
+                                Mendukung pengembangan project dan eksperimen
+                                teknologi kelistrikan.
+                            </span>
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>
+                                Mengutamakan keselamatan kerja dalam setiap
+                                aktivitas laboratorium.
+                            </span>
+                        </li>
+
+                    </ul>
+
+                    <a href="profil.html" class="btn-main mt-3">
+                        Selengkapnya
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     FACILITIES
+============================================================= -->
+<section class="section section-soft" id="fasilitas">
+
+    <div class="container">
+
+        <div class="section-heading-center reveal">
+
+            <div class="section-label">
+                Fasilitas
+            </div>
+
+            <h2 class="section-title">
+                Fasilitas Laboratorium
+            </h2>
+
+            <p class="section-description">
+                Peralatan pembelajaran dan pendukung praktikum untuk
+                mengembangkan kompetensi mahasiswa pada bidang instalasi
+                dan sistem kelistrikan.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- IML -->
+            <div class="col-md-6 col-lg-3 reveal">
+
+                <article class="facility-card">
+
+                    <div class="facility-image">
+
+                        <img
+                            src="slide3.jpg"
+                            alt="Trainer Panel IML"
+                            loading="lazy"
+                        >
+
+                        <span class="facility-number">
+                            01
+                        </span>
+
+                    </div>
+
+                    <div class="facility-content">
+
+                        <span class="facility-category">
+                            Trainer
+                        </span>
+
+                        <h3>
+                            Trainer Panel IML
+                        </h3>
+
+                        <p>
+                            Trainer instalasi motor listrik untuk pembelajaran
+                            sistem kontrol dan instalasi kelistrikan industri.
+                        </p>
+
+                        <a href="trainer-panel-iml.html" class="facility-link">
+                            Lihat fasilitas
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- IPL -->
+            <div class="col-md-6 col-lg-3 reveal">
+
+                <article class="facility-card">
+
+                    <div class="facility-image">
+
+                        <img
+                            src="slide4.jpg"
+                            alt="Trainer Panel IPL"
+                            loading="lazy"
+                        >
+
+                        <span class="facility-number">
+                            02
+                        </span>
+
+                    </div>
+
+                    <div class="facility-content">
+
+                        <span class="facility-category">
+                            Trainer
+                        </span>
+
+                        <h3>
+                            Trainer Panel IPL
+                        </h3>
+
+                        <p>
+                            Trainer instalasi penerangan listrik untuk
+                            pembelajaran sistem pencahayaan dan kontrol.
+                        </p>
+
+                        <a href="trainer-ipl.html" class="facility-link">
+                            Lihat fasilitas
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Alat ukur -->
+            <div class="col-md-6 col-lg-3 reveal">
+
+                <article class="facility-card">
+
+                    <div class="facility-image">
+
+                        <img
+                            src="slide5.jpg"
+                            alt="Alat ukur digital laboratorium"
+                            loading="lazy"
+                        >
+
+                        <span class="facility-number">
+                            03
+                        </span>
+
+                    </div>
+
+                    <div class="facility-content">
+
+                        <span class="facility-category">
+                            Instrumentasi
+                        </span>
+
+                        <h3>
+                            Alat Ukur Digital
+                        </h3>
+
+                        <p>
+                            Multimeter, clamp meter, RST meter, insulation
+                            tester, dan instrumen pengukuran lainnya.
+                        </p>
+
+                        <a href="fasilitas-umum.html" class="facility-link">
+                            Lihat fasilitas
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- K3 -->
+            <div class="col-md-6 col-lg-3 reveal">
+
+                <article class="facility-card">
+
+                    <div class="facility-image">
+
+                        <img
+                            src="slide6.jpg"
+                            alt="Peralatan keselamatan kerja listrik"
+                            loading="lazy"
+                        >
+
+                        <span class="facility-number">
+                            04
+                        </span>
+
+                    </div>
+
+                    <div class="facility-content">
+
+                        <span class="facility-category">
+                            K3
+                        </span>
+
+                        <h3>
+                            Keselamatan Kerja
+                        </h3>
+
+                        <p>
+                            Peralatan keselamatan dan pendukung praktik kerja
+                            aman pada lingkungan laboratorium kelistrikan.
+                        </p>
+
+                        <a href="profil.html#sop" class="facility-link">
+                            Pelajari K3
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5 reveal">
+
+            <a href="fasilitas-umum.html" class="btn-main">
+                Lihat Semua Fasilitas
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     PRACTICAL PROGRAMS
+============================================================= -->
+<section class="section" id="praktikum">
+
+    <div class="container">
+
+        <div class="section-heading-center reveal">
+
+            <div class="section-label">
+                Akademik
+            </div>
+
+            <h2 class="section-title">
+                Program Praktikum
+            </h2>
+
+            <p class="section-description">
+                Materi dan kegiatan pembelajaran yang dapat diakses melalui
+                fasilitas laboratorium.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-3 reveal">
+
+                <div class="program-card">
+
+                    <div class="program-icon">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+
+                    <h3>
+                        Instalasi Motor
+                    </h3>
+
+                    <p>
+                        Pembelajaran instalasi, pengawatan, dan kontrol motor listrik.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3 reveal">
+
+                <div class="program-card">
+
+                    <div class="program-icon">
+                        <i class="bi bi-lamp"></i>
+                    </div>
+
+                    <h3>
+                        Instalasi Penerangan
+                    </h3>
+
+                    <p>
+                        Praktikum instalasi dan sistem kontrol penerangan listrik.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3 reveal">
+
+                <div class="program-card">
+
+                    <div class="program-icon">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+
+                    <h3>
+                        Sistem Kontrol
+                    </h3>
+
+                    <p>
+                        Pengenalan rangkaian kontrol dan aplikasi sistem kelistrikan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3 reveal">
+
+                <div class="program-card">
+
+                    <div class="program-icon">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+
+                    <h3>
+                        Pengukuran
+                    </h3>
+
+                    <p>
+                        Pengukuran besaran listrik menggunakan instrumen digital.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5 reveal">
+
+            <a href="modul1.pdf" target="_blank" rel="noopener" class="btn-main">
+                Buka Modul Praktikum
+                <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     PROJECT & RESEARCH
+============================================================= -->
+<section class="section project-section" id="project">
+
+    <div class="container position-relative">
+
+        <div class="row align-items-end mb-5">
+
+            <div class="col-lg-8 reveal">
+
+                <div class="section-label">
+                    Project & Riset
+                </div>
+
+                <h2 class="section-title">
+                    Dari pembelajaran menuju inovasi.
+                </h2>
+
+                <p class="section-description">
+                    Laboratorium menjadi ruang untuk mengembangkan project,
+                    eksperimen, dan penerapan teknologi kelistrikan.
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0 reveal">
+
+                <a href="project.html" class="btn-outline-light-custom">
+                    Lihat Project Lab
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4 reveal">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="slide7.jpg"
+                            alt="Project mahasiswa"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3>
+                            Project Mahasiswa
+                        </h3>
+
+                        <p>
+                            Eksperimen dan penerapan konsep kelistrikan
+                            melalui project pembelajaran.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="col-md-4 reveal">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="slide3.jpg"
+                            alt="Eksperimen sistem kontrol"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3>
+                            Sistem Kontrol
+                        </h3>
+
+                        <p>
+                            Pengembangan aplikasi kontrol dan otomasi
+                            pada sistem kelistrikan.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="col-md-4 reveal">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img
+                            src="slide4.jpg"
+                            alt="Eksperimen teknologi listrik"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="project-body">
+
+                        <h3>
+                            Eksperimen Teknologi
+                        </h3>
+
+                        <p>
+                            Eksplorasi teknologi baru untuk mendukung
+                            pembelajaran dan inovasi laboratorium.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     DOCUMENTATION
+============================================================= -->
+<section class="section" id="dokumentasi">
+
+    <div class="container">
+
+        <div class="section-heading-center reveal">
+
+            <div class="section-label">
+                Dokumentasi
+            </div>
+
+            <h2 class="section-title">
+                Aktivitas Laboratorium
+            </h2>
+
+            <p class="section-description">
+                Dokumentasi kegiatan praktikum, eksperimen, dan aktivitas
+                pembelajaran di Laboratorium Instalasi Listrik.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid reveal">
+
+            <a href="slide11.jpg" class="gallery-item large" target="_blank">
+
+                <img
+                    src="slide11.jpg"
+                    alt="Aktivitas Laboratorium Instalasi Listrik"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Aktivitas Laboratorium</span>
+                </div>
+
+            </a>
+
+
+            <a href="slide2.jpg" class="gallery-item" target="_blank">
+
+                <img
+                    src="slide2.jpg"
+                    alt="Kegiatan laboratorium"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Kegiatan Praktikum</span>
+                </div>
+
+            </a>
+
+
+            <a href="slide3.jpg" class="gallery-item" target="_blank">
+
+                <img
+                    src="slide3.jpg"
+                    alt="Trainer laboratorium"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Trainer Laboratorium</span>
+                </div>
+
+            </a>
+
+
+            <a href="slide4.jpg" class="gallery-item" target="_blank">
+
+                <img
+                    src="slide4.jpg"
+                    alt="Praktikum instalasi listrik"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Praktikum Instalasi</span>
+                </div>
+
+            </a>
+
+
+            <a href="slide5.jpg" class="gallery-item" target="_blank">
+
+                <img
+                    src="slide5.jpg"
+                    alt="Pengukuran listrik"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Pengukuran</span>
+                </div>
+
+            </a>
+
+
+            <a href="slide6.jpg" class="gallery-item" target="_blank">
+
+                <img
+                    src="slide6.jpg"
+                    alt="Keselamatan kerja"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Keselamatan Kerja</span>
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     SAFETY / SOP
+============================================================= -->
+<section class="section section-soft" id="sop">
+
+    <div class="container">
+
+        <div class="safety-card reveal">
+
+            <div class="safety-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <h3>
+                Keselamatan adalah bagian dari setiap praktikum.
+            </h3>
+
+            <p>
+                Sebelum menggunakan fasilitas laboratorium, pastikan memahami
+                SOP, prosedur penggunaan alat, serta ketentuan keselamatan
+                kerja yang berlaku.
+            </p>
+
+            <a href="profil.html#sop" class="btn-main">
+                Lihat SOP & K3
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =============================================================
+     FOOTER
+============================================================= -->
+<footer class="site-footer" id="kontak">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- BRAND -->
+            <div class="col-lg-5 footer-column">
+
+                <div class="footer-brand">
+                    Laboratorium Instalasi Listrik
+                </div>
+
+                <p class="footer-description">
+                    Laboratorium pendidikan untuk mendukung pembelajaran,
+                    praktikum, eksperimen, dan pengembangan kompetensi
+                    teknologi kelistrikan industri di Politeknik Industri
+                    Logam Morowali.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TAUTAN -->
+            <div class="col-6 col-lg-2 footer-column">
+
+                <h4 class="footer-title">
+                    Navigasi
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">
+                            Beranda
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profil.html">
+                            Profil
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fasilitas-umum.html">
+                            Fasilitas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="project.html">
+                            Project
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#dokumentasi">
+                            Dokumentasi
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- AKADEMIK -->
+            <div class="col-6 col-lg-2 footer-column">
+
+                <h4 class="footer-title">
+                    Akademik
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="modul1.pdf" target="_blank">
+                            Modul IL1
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="modul2.pdf" target="_blank">
+                            Modul IL2
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mod3.pdf" target="_blank">
+                            Modul SPTL
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="jadwal1.pdf" target="_blank">
+                            Jadwal
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="Peminjaman-Alatbahan.html">
+                            Peminjaman Alat
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div class="col-lg-3 footer-column">
+
+                <h4 class="footer-title">
+                    Hubungi Kami
+                </h4>
+
+                <ul class="footer-contact">
+
+                    <li>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>
+                            Jl. Trans Sulawesi, Bahodopi,
+                            Kabupaten Morowali, Sulawesi Tengah
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-clock-fill"></i>
+                        <span>
+                            Senin–Jumat<br>
+                            08.00–16.00 WITA
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-telephone-fill"></i>
+                        <span>
+                            085796658212
+                        </span>
+                    </li>
+
+                    <li>
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>
+                            lab.listrik@pilm.ac.id
+                        </span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="row g-2">
+
+                <div class="col-md-6">
+                    © 2026 Laboratorium Instalasi Listrik — PILM
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    Politeknik Industri Logam Morowali
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =============================================================
+     BACK TO TOP
+============================================================= -->
+<button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Kembali ke atas"
+>
+    <i class="bi bi-arrow-up"></i>
+</button>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    /* =========================================================
+       HEADER SCROLL EFFECT
+    ========================================================= */
+    const header = document.getElementById('mainHeader');
+
+    function updateHeader() {
+
+        if (window.scrollY > 30) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+    }
+
+    window.addEventListener('scroll', updateHeader, {
+        passive: true
+    });
+
+    updateHeader();
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU AFTER CLICK
+    ========================================================= */
+    const navigation = document.getElementById('mainNavigation');
+
+    document.querySelectorAll(
+        '#mainNavigation a:not(.dropdown-toggle)'
+    ).forEach(link => {
+
+        link.addEventListener('click', () => {
+
+            if (
+                window.innerWidth < 992 &&
+                navigation.classList.contains('show')
+            ) {
+
+                const collapse =
+                    bootstrap.Collapse.getInstance(navigation);
+
+                if (collapse) {
+                    collapse.hide();
+                }
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================================================
+       HERO SLIDESHOW
+    ========================================================= */
+    const slides =
+        document.querySelectorAll('.hero-slide');
+
+    const indicators =
+        document.querySelectorAll('.hero-indicator');
+
+    let currentSlide = 0;
+
+    let slideTimer;
+
+
+    function showSlide(index) {
+
+        if (!slides.length) return;
+
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+
+        slides[index].classList.add('active');
+
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+        }
+
+        currentSlide = index;
+
+    }
+
+
+    function nextSlide() {
+
+        const next =
+            (currentSlide + 1) % slides.length;
+
+        showSlide(next);
+
+    }
+
+
+    function startSlider() {
+
+        clearInterval(slideTimer);
+
+        slideTimer =
+            setInterval(nextSlide, 5500);
+
+    }
+
+
+    indicators.forEach(indicator => {
+
+        indicator.addEventListener('click', () => {
+
+            const index =
+                Number(indicator.dataset.slide);
+
+            showSlide(index);
+
+            startSlider();
+
+        });
+
+    });
+
+
+    startSlider();
+
+
+    /* =========================================================
+       PAUSE HERO WHEN TAB IS NOT ACTIVE
+    ========================================================= */
+    document.addEventListener(
+        'visibilitychange',
+        () => {
+
+            if (document.hidden) {
+                clearInterval(slideTimer);
+            } else {
+                startSlider();
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    const revealElements =
+        document.querySelectorAll('.reveal');
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('show');
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+    const backToTop =
+        document.getElementById('backToTop');
+
+
+    window.addEventListener(
+        'scroll',
+        () => {
+
+            if (window.scrollY > 500) {
+
+                backToTop.classList.add('show');
+
+            } else {
+
+                backToTop.classList.remove('show');
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    backToTop.addEventListener(
+        'click',
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        }
+    );
+
+
+    /* =========================================================
+       KEYBOARD ACCESSIBILITY
+    ========================================================= */
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'Escape') {
+
+                const openDropdown =
+                    document.querySelector(
+                        '.dropdown-menu.show'
+                    );
+
+                if (openDropdown) {
+
+                    const toggle =
+                        openDropdown
+                            .parentElement
+                            .querySelector(
+                                '.dropdown-toggle'
+                            );
+
+                    if (toggle) {
+                        bootstrap.Dropdown
+                            .getOrCreateInstance(toggle)
+                            .hide();
+                    }
+
+                }
+
+            }
+
+        }
+    );
+</script>
+
+</body>
+</html>
