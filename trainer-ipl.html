@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trainer IPL (Instalasi Penerangan Listrik) Laboratorium Instalasi Listrik Politeknik Industri Logam Morowali. Informasi trainer dan komponen pembelajaran.">
+  <title>Trainer IPL | Laboratorium Instalasi Listrik PILM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --navy: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --surface: #f8fafc;
+      --white: #fff;
+      --border: #e2e8f0;
+      --accent: #f59e0b;
+      --success: #16a34a;
+      --shadow-sm: 0 8px 24px rgba(15,23,42,.06);
+      --shadow-md: 0 18px 45px rgba(15,23,42,.10);
+      --radius: 20px;
+      --header-height: 78px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1050;
+      min-height: var(--header-height);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(226,232,240,.75);
+      transition: .3s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 8px 30px rgba(15,23,42,.08);
+    }
+
+    .navbar { min-height: var(--header-height); }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      min-width: 0;
+    }
+
+    .brand:hover { color: var(--navy); }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .brand-text { line-height: 1.15; min-width: 0; }
+
+    .brand-title {
+      display: block;
+      font-size: .98rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .70rem;
+      font-weight: 500;
+    }
+
+    .navbar-nav .nav-link {
+      color: #475569;
+      font-size: .9rem;
+      font-weight: 600;
+      padding: .65rem .75rem !important;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: .5rem .65rem;
+      box-shadow: none !important;
+    }
+
+    .dropdown-menu {
+      min-width: 230px;
+      padding: 8px;
+      border: 1px solid var(--border) !important;
+      border-radius: 14px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .dropdown-item {
+      padding: 10px 12px;
+      border-radius: 9px;
+      color: var(--text);
+      font-size: .86rem;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+    .page-hero {
+      position: relative;
+      min-height: 68vh;
+      padding: 145px 0 85px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(2,6,23,.90) 0%, rgba(2,6,23,.68) 50%, rgba(2,6,23,.35) 100%),
+        url("ipl-hero.jpg") center/cover no-repeat;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      bottom: -210px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 70px rgba(255,255,255,.025),
+        0 0 0 140px rgba(255,255,255,.015);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #60a5fa;
+      box-shadow: 0 0 0 5px rgba(96,165,250,.14);
+    }
+
+    .hero-title {
+      margin: 0 0 18px;
+      font-size: clamp(2.35rem, 5vw, 4.25rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -.045em;
+    }
+
+    .hero-title span { color: #93c5fd; }
+
+    .hero-description {
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: rgba(255,255,255,.84);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary-custom,
+    .btn-light-custom {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .btn-primary-custom {
+      color: #fff;
+      background: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary-custom:hover {
+      color: #fff;
+      background: #084fba;
+      border-color: #084fba;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(11,94,215,.30);
+    }
+
+    .btn-light-custom {
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid #fff;
+    }
+
+    .btn-light-custom:hover {
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 27px;
+      color: rgba(255,255,255,.76);
+      font-size: .88rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* =========================
+       GENERAL
+    ========================== */
+    .section { padding: 88px 0; }
+    .section-soft { background: var(--surface); }
+
+    .section-heading {
+      max-width: 760px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -.035em;
+    }
+
+    .section-description {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* =========================
+       INTRO CARD
+    ========================== */
+    .intro-card {
+      position: relative;
+      overflow: hidden;
+      margin-top: -42px;
+      z-index: 5;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .intro-body { padding: 40px; }
+
+    .intro-body h2 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    .intro-body p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .intro-image {
+      width: 100%;
+      height: 100%;
+      min-height: 310px;
+      object-fit: cover;
+      background: #f1f5f9;
+    }
+
+    .intro-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .intro-point {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 10px;
+      color: #475569;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .intro-point i { color: var(--success); }
+
+    /* =========================
+       COMPONENT CARDS
+    ========================== */
+    .component-card {
+      height: 100%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .component-card:hover {
+      transform: translateY(-7px);
+      border-color: #bfdbfe;
+      box-shadow: var(--shadow-md);
+    }
+
+    .component-img-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 260px;
+      padding: 20px;
+      background: linear-gradient(180deg, #f8fafc, #eef2f7);
+      overflow: hidden;
+    }
+
+    .component-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform .35s ease;
+    }
+
+    .component-card:hover .component-img {
+      transform: scale(1.035);
+    }
+
+    .component-number {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      color: #fff;
+      background: rgba(15,23,42,.86);
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .component-body {
+      padding: 25px;
+    }
+
+    .component-body h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .component-body > p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .spec-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .spec-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: .79rem;
+    }
+
+    .spec-list li:last-child { border-bottom: 0; }
+
+    .spec-label {
+      color: var(--muted);
+      flex: 0 0 42%;
+    }
+
+    .spec-value {
+      color: var(--navy);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* =========================
+       CATEGORY BAR
+    ========================== */
+    .category-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .category-title i {
+      color: var(--primary);
+    }
+
+    .category-count {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--primary);
+      background: #eff6ff;
+      font-size: .74rem;
+      font-weight: 800;
+    }
+
+    /* =========================
+       INFO / CTA
+    ========================== */
+    .info-panel {
+      padding: 32px;
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 16px;
+      border-radius: 15px;
+      color: var(--primary);
+      background: #eff6ff;
+      font-size: 1.35rem;
+    }
+
+    .info-panel h3 {
+      margin: 0 0 9px;
+      color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .info-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    .safety-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 19px 20px;
+      margin-top: 28px;
+      color: #7c2d12;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 15px;
+    }
+
+    .safety-alert i {
+      margin-top: 3px;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .safety-alert strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-banner {
+      position: relative;
+      overflow: hidden;
+      padding: 45px;
+      border-radius: 26px;
+      color: #fff;
+      background: linear-gradient(110deg, rgba(15,23,42,.98), rgba(8,66,152,.94));
+      box-shadow: var(--shadow-md);
+    }
+
+    .info-banner::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -90px;
+      top: -140px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 45px rgba(255,255,255,.025);
+    }
+
+    .info-banner-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-banner h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .info-banner p {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255,255,255,.76);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .footer {
+      padding: 62px 0 25px;
+      color: #94a3b8;
+      background: #0b1220;
+    }
+
+    .footer-brand {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .footer p { font-size: .88rem; }
+
+    .footer-title {
+      margin-bottom: 17px;
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 800;
+    }
+
+    .footer-links {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .footer-links li { margin-bottom: 9px; }
+
+    .footer-links a {
+      color: #94a3b8;
+      font-size: .84rem;
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    .contact-line {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 11px;
+      color: #94a3b8;
+      font-size: .84rem;
+    }
+
+    .contact-line i {
+      color: #60a5fa;
+      margin-top: 3px;
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      margin-top: 28px;
+      border-top: 1px solid rgba(148,163,184,.15);
+      font-size: .78rem;
+    }
+
+    /* =========================
+       BACK TOP / REVEAL
+    ========================== */
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      color: var(--navy);
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow-sm);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .25s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 991.98px) {
+      :root { --header-height: 72px; }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-title { font-size: .90rem; }
+      .brand-subtitle { font-size: .64rem; }
+
+      .navbar-collapse {
+        margin-top: 12px;
+        padding: 12px;
+        background: rgba(255,255,255,.98);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .navbar-nav .nav-link {
+        padding: .72rem .8rem !important;
+      }
+
+      .page-hero {
+        min-height: 62vh;
+        padding-top: 125px;
+      }
+
+      .intro-card { margin-top: -25px; }
+
+      .intro-image { min-height: 280px; }
+
+      .section { padding: 75px 0; }
+    }
+
+    @media (max-width: 767.98px) {
+      .brand-subtitle { display: none; }
+
+      .page-hero {
+        min-height: auto;
+        padding: 122px 0 75px;
+      }
+
+      .hero-title { font-size: 2.35rem; }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary-custom,
+      .btn-light-custom {
+        width: 100%;
+      }
+
+      .hero-meta {
+        display: grid;
+        gap: 9px;
+      }
+
+      .section { padding: 64px 0; }
+
+      .section-heading { margin-bottom: 36px; }
+
+      .intro-card {
+        margin-top: -15px;
+        border-radius: 20px;
+      }
+
+      .intro-body { padding: 26px 22px; }
+
+      .intro-image { min-height: 235px; }
+
+      .component-img-wrap { height: 230px; }
+
+      .component-body { padding: 22px; }
+
+      .category-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .info-banner {
+        padding: 30px 24px;
+        border-radius: 20px;
+      }
+
+      .back-top {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .brand-title { font-size: .82rem; }
+      .brand-logo { width: 42px; height: 42px; }
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.85rem; }
+
+      .spec-list li {
+        display: block;
+      }
+
+      .spec-value {
+        margin-top: 2px;
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+
+        <a class="brand" href="index.html" aria-label="Beranda Laboratorium Instalasi Listrik">
+          <img src="logo.png" alt="Logo Laboratorium Instalasi Listrik" class="brand-logo">
+          <span class="brand-text">
+            <span class="brand-title">Laboratorium Instalasi Listrik</span>
+            <span class="brand-subtitle">Politeknik Industri Logam Morowali</span>
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false"
+                aria-label="Buka navigasi">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html">Profil</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                Fasilitas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="fasilitas-umum.html">Fasilitas Umum</a></li>
+                <li><a class="dropdown-item" href="trainer-panel-iml.html">Trainer Panel IML</a></li>
+                <li><a class="dropdown-item active" href="trainer-ipl.html">Trainer IPL</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                Akademik
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="modul1.pdf" target="_blank">Modul Praktikum 1</a></li>
+                <li><a class="dropdown-item" href="modul2.pdf" target="_blank">Modul Praktikum 2</a></li>
+                <li><a class="dropdown-item" href="mod3.pdf" target="_blank">Modul Praktikum 3</a></li>
+                <li><a class="dropdown-item" href="MODUL PELATIHAN PE.pdf" target="_blank">Modul Pelatihan PE</a></li>
+                <li><a class="dropdown-item" href="komponen_panel.pdf" target="_blank">Komponen Panel</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                Jadwal
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="jadwal1.pdf" target="_blank">Jadwal Praktikum</a></li>
+                <li><a class="dropdown-item" href="jadwal2.pdf" target="_blank">Jadwal Kegiatan</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="project.html">Project &amp; Riset</a>
+            </li>
+
+            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <a class="btn btn-primary px-3 py-2 rounded-3 fw-semibold" href="Peminjaman-Alatbahan.html">
+                <i class="bi bi-box-seam me-1"></i> Peminjaman
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero-content reveal">
+
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Fasilitas Praktikum
+          </div>
+
+          <h1 class="hero-title">
+            Trainer <span>IPL</span>
+          </h1>
+
+          <p class="hero-description">
+            Instalasi Penerangan Listrik sebagai media pembelajaran untuk memahami
+            sistem pengkabelan, pemasangan komponen, pengujian, dan pengoperasian
+            instalasi penerangan.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#komponen" class="btn-primary-custom">
+              Lihat Komponen
+              <i class="bi bi-arrow-down"></i>
+            </a>
+            <a href="index.html" class="btn-light-custom">
+              <i class="bi bi-house-door"></i>
+              Kembali ke Beranda
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <span><i class="bi bi-lightbulb"></i> Instalasi Penerangan Listrik</span>
+            <span><i class="bi bi-mortarboard"></i> Media Pembelajaran Praktikum</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+    <section class="section pt-0">
+      <div class="container">
+
+        <div class="intro-card reveal">
+          <div class="row g-0 align-items-stretch">
+
+            <div class="col-lg-7">
+              <div class="intro-body">
+                <span class="section-kicker">Mengenal Trainer</span>
+                <h2>Apa Itu Trainer IPL?</h2>
+
+                <p>
+                  Trainer IPL (Instalasi Penerangan Listrik) adalah perangkat
+                  pembelajaran yang dirancang khusus untuk mempelajari sistem
+                  instalasi penerangan bangunan mulai dari dasar hingga menengah.
+                </p>
+
+                <p>
+                  Trainer ini mencakup berbagai komponen standar yang digunakan
+                  dalam instalasi penerangan rumah dan industri ringan.
+                </p>
+
+                <p>
+                  Melalui trainer ini, mahasiswa dapat mempelajari berbagai sistem
+                  pengkabelan, pemasangan komponen, dan pengujian instalasi
+                  penerangan sesuai dengan standar PUIL (Persyaratan Umum
+                  Instalasi Listrik).
+                </p>
+
+                <div class="intro-points">
+                  <span class="intro-point">
+                    <i class="bi bi-check-circle-fill"></i> Pengkabelan
+                  </span>
+                  <span class="intro-point">
+                    <i class="bi bi-check-circle-fill"></i> Proteksi
+                  </span>
+                  <span class="intro-point">
+                    <i class="bi bi-check-circle-fill"></i> Kontrol lampu
+                  </span>
+                  <span class="intro-point">
+                    <i class="bi bi-check-circle-fill"></i> Pengujian instalasi
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <img src="ipl-hero.jpg"
+                   alt="Trainer IPL Instalasi Penerangan Listrik"
+                   class="intro-image">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         COMPONENTS
+    ========================== -->
+    <section class="section section-soft" id="komponen">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <span class="section-kicker">Komponen Trainer</span>
+          <h2 class="section-title">Komponen Trainer IPL</h2>
+          <p class="section-description">
+            Komponen yang tersedia pada Trainer IPL beserta fungsi dan spesifikasi
+            yang tercantum pada dokumentasi laboratorium.
+          </p>
+        </div>
+
+        <!-- KATEGORI 1 -->
+        <div class="category-bar reveal">
+          <h3 class="category-title">
+            <i class="bi bi-lightning-charge-fill"></i>
+            Proteksi &amp; Pengendalian
+          </h3>
+          <span class="category-count">2 Komponen</span>
+        </div>
+
+        <div class="row g-4 mb-5">
+
+          <!-- MCB -->
+          <div class="col-md-6">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">01</span>
+                <img src="mcb.jpg" class="component-img" alt="MCB Miniature Circuit Breaker">
+              </div>
+              <div class="component-body">
+                <h3>MCB (Miniature Circuit Breaker)</h3>
+                <p>
+                  Pengaman arus lebih dan hubung singkat pada instalasi penerangan.
+                  Berfungsi sebagai pengganti sekering dengan kemampuan reset.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Tipe</span><span class="spec-value">1 Pole, 2 Pole</span></li>
+                  <li><span class="spec-label">Rating arus</span><span class="spec-value">6A, 10A, 16A</span></li>
+                  <li><span class="spec-label">Tegangan kerja</span><span class="spec-value">220–240V AC</span></li>
+                  <li><span class="spec-label">Kurva trip</span><span class="spec-value">Tipe C</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- CAMSWITCH -->
+          <div class="col-md-6">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">02</span>
+                <img src="camswitch.jpg" class="component-img" alt="Camswitch">
+              </div>
+              <div class="component-body">
+                <h3>Camswitch</h3>
+                <p>
+                  Saklar mekanis dengan kontak yang digerakkan oleh cam untuk
+                  mengontrol beberapa rangkaian sekaligus.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Jumlah posisi</span><span class="spec-value">2–4 posisi</span></li>
+                  <li><span class="spec-label">Rating arus</span><span class="spec-value">10A–16A</span></li>
+                  <li><span class="spec-label">Tegangan kerja</span><span class="spec-value">250V AC</span></li>
+                  <li><span class="spec-label">Aplikasi</span><span class="spec-value">Kontrol multi-lampu</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- KATEGORI 2 -->
+        <div class="category-bar reveal">
+          <h3 class="category-title">
+            <i class="bi bi-lightbulb-fill"></i>
+            Sumber Cahaya &amp; Sakelar
+          </h3>
+          <span class="category-count">6 Komponen</span>
+        </div>
+
+        <div class="row g-4 mb-5">
+
+          <!-- LAMPU -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">03</span>
+                <img src="lampu.jpg" class="component-img" alt="Lampu Pijar">
+              </div>
+              <div class="component-body">
+                <h3>Lampu Pijar</h3>
+                <p>
+                  Sumber cahaya dengan filamen tungsten yang berpijar saat dialiri
+                  listrik. Digunakan untuk pembelajaran dasar.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Daya</span><span class="spec-value">25W, 40W, 60W</span></li>
+                  <li><span class="spec-label">Tegangan</span><span class="spec-value">220V</span></li>
+                  <li><span class="spec-label">Base</span><span class="spec-value">E27, E14</span></li>
+                  <li><span class="spec-label">Efisiensi</span><span class="spec-value">10–15 lm/W</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- SAKELAR TUNGGAL -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">04</span>
+                <img src="sakelartunggal.jpg" class="component-img" alt="Sakelar Tunggal">
+              </div>
+              <div class="component-body">
+                <h3>Sakelar Tunggal</h3>
+                <p>
+                  Saklar dasar untuk mengontrol satu titik lampu dari satu lokasi.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Rating</span><span class="spec-value">10A 250V</span></li>
+                  <li><span class="spec-label">Tipe</span><span class="spec-value">Toggle, push button</span></li>
+                  <li><span class="spec-label">Warna</span><span class="spec-value">Putih, coklat, hitam</span></li>
+                  <li><span class="spec-label">Material</span><span class="spec-value">PC fire retardant</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- SAKELAR TUKAR -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">05</span>
+                <img src="sakelartukar.jpg" class="component-img" alt="Sakelar Tukar">
+              </div>
+              <div class="component-body">
+                <h3>Sakelar Tukar</h3>
+                <p>
+                  Digunakan untuk mengontrol satu titik lampu dari dua lokasi
+                  berbeda atau sistem staircase switching.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Konfigurasi</span><span class="spec-value">SPDT</span></li>
+                  <li><span class="spec-label">Rating</span><span class="spec-value">10A 250V</span></li>
+                  <li><span class="spec-label">Terminal</span><span class="spec-value">3 terminal</span></li>
+                  <li><span class="spec-label">Aplikasi</span><span class="spec-value">Tangga, lorong</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- SAKELAR GANDA -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">06</span>
+                <img src="sakelarganda.jpg" class="component-img" alt="Sakelar Ganda">
+              </div>
+              <div class="component-body">
+                <h3>Sakelar Ganda</h3>
+                <p>
+                  Dua toggle dalam satu bodi untuk mengontrol dua lampu atau
+                  kelompok lampu secara independen.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Konfigurasi</span><span class="spec-value">DPST</span></li>
+                  <li><span class="spec-label">Rating</span><span class="spec-value">10A 250V/kutub</span></li>
+                  <li><span class="spec-label">Terminal</span><span class="spec-value">4 terminal</span></li>
+                  <li><span class="spec-label">Aplikasi</span><span class="spec-value">Kontrol multi-lampu</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- SAKELAR SILANG -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">07</span>
+                <img src="sakelarsilang.jpg" class="component-img" alt="Sakelar Silang">
+              </div>
+              <div class="component-body">
+                <h3>Sakelar Silang</h3>
+                <p>
+                  Digunakan bersama saklar tukar untuk mengontrol satu lampu
+                  dari tiga lokasi atau lebih.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Konfigurasi</span><span class="spec-value">DPDT</span></li>
+                  <li><span class="spec-label">Rating</span><span class="spec-value">10A 250V</span></li>
+                  <li><span class="spec-label">Terminal</span><span class="spec-value">4 terminal</span></li>
+                  <li><span class="spec-label">Aplikasi</span><span class="spec-value">Banyak pintu</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- SMART BARDI -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">08</span>
+                <img src="bardi.jpg" class="component-img" alt="Smart Saklar Bardi">
+              </div>
+              <div class="component-body">
+                <h3>Smart Saklar Bardi</h3>
+                <p>
+                  Saklar otomatis dengan sensor gerak atau cahaya untuk
+                  mengontrol lampu secara otomatis.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Tipe</span><span class="spec-value">Gerak, cahaya</span></li>
+                  <li><span class="spec-label">Jangkauan</span><span class="spec-value">5–8 meter</span></li>
+                  <li><span class="spec-label">Sudut deteksi</span><span class="spec-value">120–180°</span></li>
+                  <li><span class="spec-label">Waktu tunda</span><span class="spec-value">10 dtk–30 mnt</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- KATEGORI 3 -->
+        <div class="category-bar reveal">
+          <h3 class="category-title">
+            <i class="bi bi-box-seam-fill"></i>
+            Instalasi &amp; Pengkabelan
+          </h3>
+          <span class="category-count">6 Komponen</span>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- FITTING -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">09</span>
+                <img src="fitting.jpg" class="component-img" alt="Fitting Lampu">
+              </div>
+              <div class="component-body">
+                <h3>Fitting Lampu</h3>
+                <p>
+                  Dudukan lampu yang menghubungkan lampu dengan instalasi listrik.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Tipe</span><span class="spec-value">E27, E14, GU10, G13</span></li>
+                  <li><span class="spec-label">Material</span><span class="spec-value">Plastik, keramik, logam</span></li>
+                  <li><span class="spec-label">Rating</span><span class="spec-value">250V 4A–10A</span></li>
+                  <li><span class="spec-label">Proteksi</span><span class="spec-value">IP20–IP65</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- PIPA -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">10</span>
+                <img src="pipa.jpg" class="component-img" alt="Pipa Conduit">
+              </div>
+              <div class="component-body">
+                <h3>Pipa Conduit</h3>
+                <p>
+                  Pelindung kabel instalasi yang dipasang di permukaan dinding
+                  untuk sistem surface wiring.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Material</span><span class="spec-value">PVC, galvanis</span></li>
+                  <li><span class="spec-label">Diameter</span><span class="spec-value">16, 20, 25 mm</span></li>
+                  <li><span class="spec-label">Warna</span><span class="spec-value">Putih, abu-abu</span></li>
+                  <li><span class="spec-label">Aksesori</span><span class="spec-value">Elbow, tee, box</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- TDOS -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">11</span>
+                <img src="tdos.jpg" class="component-img" alt="T-DOS">
+              </div>
+              <div class="component-body">
+                <h3>T-DOS</h3>
+                <p>
+                  Kotak sambungan untuk distribusi kabel ke outlet dan sakelar
+                  dalam instalasi conduit.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Ukuran</span><span class="spec-value">4×4, 5×5 inci</span></li>
+                  <li><span class="spec-label">Material</span><span class="spec-value">PVC self-extinguishing</span></li>
+                  <li><span class="spec-label">Kapasitas</span><span class="spec-value">4–6 kabel</span></li>
+                  <li><span class="spec-label">Sistem</span><span class="spec-value">Screwless terminal</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- KLEMP -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">12</span>
+                <img src="klemp.jpg" class="component-img" alt="Clemp Pipa">
+              </div>
+              <div class="component-body">
+                <h3>Clemp Pipa</h3>
+                <p>
+                  Penjepit untuk memasang pipa conduit ke dinding atau
+                  permukaan lainnya.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Material</span><span class="spec-value">Plastik, logam</span></li>
+                  <li><span class="spec-label">Ukuran</span><span class="spec-value">Sesuai diameter pipa</span></li>
+                  <li><span class="spec-label">Jarak pemasangan</span><span class="spec-value">Maks. 1 meter</span></li>
+                  <li><span class="spec-label">Warna</span><span class="spec-value">Putih, abu-abu</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- ISOLASI -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">13</span>
+                <img src="isolasi.jpg" class="component-img" alt="Isolasi Listrik">
+              </div>
+              <div class="component-body">
+                <h3>Isolasi Listrik</h3>
+                <p>
+                  Pita isolasi untuk melindungi sambungan kabel dari hubungan
+                  singkat dan kontak yang tidak diinginkan.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Material</span><span class="spec-value">PVC</span></li>
+                  <li><span class="spec-label">Lebar</span><span class="spec-value">15, 19 mm</span></li>
+                  <li><span class="spec-label">Panjang</span><span class="spec-value">10, 20 m/roll</span></li>
+                  <li><span class="spec-label">Tegangan kerja</span><span class="spec-value">600V</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <!-- OUTBOW -->
+          <div class="col-md-6 col-lg-4">
+            <article class="component-card reveal">
+              <div class="component-img-wrap">
+                <span class="component-number">14</span>
+                <img src="outbow.jpg" class="component-img" alt="Inbow DOS">
+              </div>
+              <div class="component-body">
+                <h3>Inbow DOS</h3>
+                <p>
+                  Kotak sambungan dalam untuk instalasi conduit yang ditanam
+                  di dinding.
+                </p>
+                <ul class="spec-list">
+                  <li><span class="spec-label">Kedalaman</span><span class="spec-value">40, 60 mm</span></li>
+                  <li><span class="spec-label">Material</span><span class="spec-value">PVC</span></li>
+                  <li><span class="spec-label">Sistem</span><span class="spec-value">Knock-out conduit</span></li>
+                  <li><span class="spec-label">Aplikasi</span><span class="spec-value">Instalasi tersembunyi</span></li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         INFORMATION
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <span class="section-kicker">Pembelajaran</span>
+          <h2 class="section-title">Ruang Lingkup Praktikum IPL</h2>
+          <p class="section-description">
+            Trainer IPL dapat digunakan sebagai media pembelajaran untuk memahami
+            rangkaian, komponen, pemasangan, dan pengujian instalasi penerangan.
+          </p>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-md-4">
+            <div class="info-panel reveal">
+              <div class="info-icon"><i class="bi bi-diagram-3"></i></div>
+              <h3>Pengkabelan</h3>
+              <p>
+                Mempelajari hubungan kabel dan konfigurasi rangkaian pada
+                instalasi penerangan.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="info-panel reveal">
+              <div class="info-icon"><i class="bi bi-toggle-on"></i></div>
+              <h3>Sistem Sakelar</h3>
+              <p>
+                Memahami penggunaan sakelar tunggal, tukar, ganda, silang,
+                dan pengendalian multi-lampu.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="info-panel reveal">
+              <div class="info-icon"><i class="bi bi-search"></i></div>
+              <h3>Pengujian</h3>
+              <p>
+                Mendukung kegiatan pengujian dan pemeriksaan rangkaian instalasi
+                penerangan setelah pemasangan.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="safety-alert reveal">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          <div>
+            <strong>Keselamatan Praktikum</strong>
+            Gunakan prosedur kerja laboratorium dan alat pelindung diri yang
+            ditetapkan sebelum melakukan pemasangan atau pengujian rangkaian.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         CTA
+    ========================== -->
+    <section class="section pt-0">
+      <div class="container">
+        <div class="info-banner reveal">
+          <div class="info-banner-content">
+            <div class="row align-items-center g-4">
+
+              <div class="col-lg-8">
+                <h2>Ingin melihat fasilitas lainnya?</h2>
+                <p>
+                  Jelajahi Trainer Panel IML, Fasilitas Umum, modul praktikum,
+                  jadwal, dan project Laboratorium Instalasi Listrik.
+                </p>
+              </div>
+
+              <div class="col-lg-4 text-lg-end">
+                <a href="trainer-panel-iml.html" class="btn btn-light px-4 py-3 rounded-3 fw-bold me-lg-2 mb-2 mb-lg-0">
+                  <i class="bi bi-cpu me-2"></i>Trainer IML
+                </a>
+                <a href="index.html" class="btn btn-primary px-4 py-3 rounded-3 fw-bold">
+                  <i class="bi bi-house-door me-2"></i>Beranda
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="row g-5">
+
+        <div class="col-lg-5">
+          <div class="footer-brand mb-3">Laboratorium Instalasi Listrik</div>
+          <p class="mb-3">Politeknik Industri Logam Morowali</p>
+          <p class="mb-0">
+            Jl. Trans Sulawesi, Desa Padobaho, Kecamatan Bahodopi,
+            Kabupaten Morowali, Sulawesi Tengah.
+          </p>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="footer-title">Kontak</div>
+
+          <div class="contact-line">
+            <i class="bi bi-envelope"></i>
+            <span>lab.listrik@pilm.ac.id</span>
+          </div>
+
+          <div class="contact-line">
+            <i class="bi bi-telephone"></i>
+            <span>085796658212</span>
+          </div>
+
+          <div class="contact-line">
+            <i class="bi bi-clock"></i>
+            <span>Senin–Jumat: 08.00–16.00 WITA</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="footer-title">Tautan Cepat</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil Lab</a></li>
+            <li><a href="fasilitas-umum.html">Fasilitas Umum</a></li>
+            <li><a href="trainer-panel-iml.html">Trainer Panel IML</a></li>
+            <li><a href="trainer-ipl.html">Trainer IPL</a></li>
+            <li><a href="project.html">Project &amp; Riset</a></li>
+            <li><a href="Peminjaman-Alatbahan.html">Peminjaman Alat &amp; Bahan</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+        <span>&copy; 2026 Laboratorium Instalasi Listrik - Politeknik Industri Logam Morowali</span>
+        <span>Laboratorium Instalasi Listrik PILM</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <a href="#" class="back-top" id="backTop" aria-label="Kembali ke atas">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.getElementById("siteHeader");
+      const backTop = document.getElementById("backTop");
+
+      const handleScroll = () => {
+        const scrolled = window.scrollY > 20;
+
+        if (header) {
+          header.classList.toggle("scrolled", scrolled);
+        }
+
+        if (backTop) {
+          backTop.classList.toggle("show", window.scrollY > 450);
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+
+      if (backTop) {
+        backTop.addEventListener("click", (event) => {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.10 });
+
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add("show"));
+      }
+    });
+  </script>
+
+</body>
+</html>
